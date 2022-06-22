@@ -2,9 +2,9 @@
 """
 Fred Python API.
 """
-from api.category import FredAPICategory
-from api.release import FredAPIRelease
-from api.series import FredAPISeries
+from .category import FredAPICategory
+from .release import FredAPIRelease
+from .series import FredAPISeries
 
 
 class FredAPI(FredAPISeries, FredAPIRelease, FredAPICategory):

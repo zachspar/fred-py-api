@@ -5,7 +5,7 @@ Test the Fred API Category Namespace.
 import unittest
 
 import config
-from api import FredAPICategory
+from src.fredpy.api import FredAPICategory
 
 
 class TestFredAPICategory(unittest.TestCase):

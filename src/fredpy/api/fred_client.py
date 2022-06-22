@@ -3,11 +3,10 @@
 Fred API Client.
 """
 from http import HTTPStatus
-from typing import NewType
 
 import requests
 
-from api.exceptions import FredAPIRequestError
+from .exceptions import FredAPIRequestError
 
 
 class FredClient(object):

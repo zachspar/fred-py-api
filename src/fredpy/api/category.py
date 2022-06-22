@@ -2,7 +2,7 @@
 """
 Fred API for Category Namespace.
 """
-from api.fred_client import FredClient
+from .fred_client import FredClient
 
 
 class FredAPICategory(FredClient):

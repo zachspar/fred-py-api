@@ -2,7 +2,7 @@
 """
 Fred API Series Namespace Requests.
 """
-from api.fred_client import FredClient
+from .fred_client import FredClient
 
 
 class FredAPISeries(FredClient):
