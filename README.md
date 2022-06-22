@@ -1,5 +1,5 @@
-# fred_py_api
-FRED API Python Wrapper
+# Fred Python API
+A fully-featured FRED Python Wrapper.
 
-### FRED Reference
- - [Fred API Documentation](https://fred.stlouisfed.org/docs/api/fred/)
+### FRED References:
+ - [API Documentation](https://fred.stlouisfed.org/docs/api/fred/)

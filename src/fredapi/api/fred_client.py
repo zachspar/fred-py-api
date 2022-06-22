@@ -3,6 +3,7 @@
 Fred API Client.
 """
 from http import HTTPStatus
+from os import environ
 
 import requests
 
@@ -14,7 +15,10 @@ class FredClient(object):
 
     def __init__(self, api_key: str = None, base_client=None):
         """Init client."""
-        assert api_key or base_client, "Fred API Client or API Key required to use FredAPISeries"
+        if not base_client:
+            base_client = environ.get("FRED_API_KEY", None)
+
+        assert api_key or base_client, "Fred API Client or API Key required to use FredAPI"
 
         if base_client and isinstance(base_client, FredClient):
             self._api_key = base_client.get_api_key()
