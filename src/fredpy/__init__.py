@@ -2,4 +2,4 @@
 """
 Fred API Python Wrapper.
 """
-from api import *
+from .api import *
