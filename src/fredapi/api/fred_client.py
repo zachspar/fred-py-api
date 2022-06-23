@@ -15,8 +15,8 @@ class FredClient(object):
 
     def __init__(self, api_key: str = None, base_client=None):
         """Init client."""
-        if not base_client:
-            base_client = environ.get("FRED_API_KEY", None)
+        if not base_client and not api_key:
+            api_key = environ.get("FRED_API_KEY", None)
 
         assert api_key or base_client, "Fred API Client or API Key required to use FredAPI"
 
