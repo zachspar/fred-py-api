@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Fred API Series Namespace.
+Fred API Sources Namespace.
 """
 from .fred_client import FredClient
 
 
-class FredAPISeries(FredClient):
+class FredAPISources(FredClient):
     """
-    Fred API Series Namespace.
+    Fred API Sources Namespace.
     
     Endpoints:
         fred/sources - Get all sources of economic data.
@@ -21,14 +21,14 @@ class FredAPISeries(FredClient):
             **kwargs,
         })
 
-    def get_source(self, source_id: str = None, **kwargs) -> dict:
+    def get_source(self, source_id: int = None, **kwargs) -> dict:
         """Get source by ID."""
         return self._get(f"source", {
             "source_id": source_id,
             **kwargs,
         })
 
-    def get_source_releases(self, source_id: str = None, **kwargs) -> dict:
+    def get_source_releases(self, source_id: int = None, **kwargs) -> dict:
         """Get source releases by ID."""
         return self._get(f"source/releases", {
             "source_id": source_id,
