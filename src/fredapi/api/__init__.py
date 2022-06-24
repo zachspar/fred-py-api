@@ -2,7 +2,18 @@
 """
 Fred API core.
 """
-from .category import FredAPICategory
-from .release import FredAPIRelease
+from .categories import FredAPICategories
+from .exceptions import BaseFredAPIError, FredAPIRequestError
+from .releases import FredAPIReleases
 from .series import FredAPISeries
-from .fred_py_api import FredAPI
+from .sources import FredAPISources
+from .tags import FredAPITags
+
+
+class FredAPI(FredAPISeries, FredAPIReleases, FredAPICategories, FredAPISources, FredAPITags):
+    """
+    Fred API.
+    https://fred.stlouisfed.org/docs/api/fred/
+    """
+
+    pass
