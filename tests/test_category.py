@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test the Fred API Category Namespace.
+Test the Fred API Categories Namespace.
 """
 import unittest
 
@@ -12,7 +12,7 @@ class TestFredAPICategory(unittest.TestCase):
 
     def setUp(self):
         """Setup the test."""
-        self.fred_api_category = FredAPICategory(config.API_KEY)
+        self.fred_api_category = FredAPICategory()
 
     def test_init_assertion_error(self):
         """Test the init assertion error."""
