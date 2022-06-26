@@ -8,7 +8,7 @@ from .sources import sources
 from .tags import tags
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli.add_command(categories)
     cli.add_command(releases)
     cli.add_command(series)
