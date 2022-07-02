@@ -17,20 +17,12 @@ class FredAPISources(FredClient):
 
     def get_sources(self, **kwargs) -> dict:
         """Get sources."""
-        return self._get(f"sources", {
-            **kwargs,
-        })
+        return self._get(f"sources", {**kwargs, })
 
     def get_source(self, source_id: int = None, **kwargs) -> dict:
         """Get source by ID."""
-        return self._get(f"source", {
-            "source_id": source_id,
-            **kwargs,
-        })
+        return self._get(f"source", {"source_id": source_id, **kwargs, })
 
     def get_source_releases(self, source_id: int = None, **kwargs) -> dict:
         """Get source releases by ID."""
-        return self._get(f"source/releases", {
-            "source_id": source_id,
-            **kwargs,
-        })
+        return self._get(f"source/releases", {"source_id": source_id, **kwargs, })

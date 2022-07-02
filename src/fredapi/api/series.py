@@ -24,25 +24,15 @@ class FredAPISeries(FredClient):
 
     def get_series_categories(self, series_id: str = None, **kwargs) -> dict:
         """Get series categories by ID."""
-        return self._get(f"series/categories", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/categories", {"series_id": series_id, **kwargs, })
 
     def get_series_tags(self, series_id: str = None, **kwargs) -> dict:
         """Get series tags by ID."""
-        return self._get(f"series/tags", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/tags", {"series_id": series_id, **kwargs, })
 
     def get_series_search(self, search_text: str = None, search_type: str = "full_text", **kwargs) -> dict:
         """Get series search by text."""
-        return self._get(f"series/search", {
-            "search_text": search_text,
-            "search_type": search_type,
-            **kwargs,
-        })
+        return self._get(f"series/search", {"search_text": search_text, "search_type": search_type, **kwargs, })
 
     def get_series_search_tags(self, **kwargs) -> dict:
         """Get series search tags by text."""
@@ -54,34 +44,20 @@ class FredAPISeries(FredClient):
 
     def get_series_observations(self, series_id: str = None, **kwargs) -> dict:
         """Get series observations by ID."""
-        return self._get(f"series/observations", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/observations", {"series_id": series_id, **kwargs, })
 
     def get_series_updates(self, **kwargs) -> dict:
         """Get series updates."""
-        return self._get(f"series/updates", {
-            **kwargs,
-        })
+        return self._get(f"series/updates", {**kwargs, })
 
     def get_series_vintagedates(self, series_id: str = None, **kwargs) -> dict:
         """Get series vintagedates by ID."""
-        return self._get(f"series/vintagedates", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/vintagedates", {"series_id": series_id, **kwargs, })
 
     def get_series_release(self, series_id: str = None, **kwargs) -> dict:
         """Get series release by ID."""
-        return self._get(f"series/release", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/release", {"series_id": series_id, **kwargs, })
 
     def get_series(self, series_id: str = None, **kwargs) -> dict:
         """Get series by ID."""
-        return self._get(f"series", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series", {"series_id": series_id, **kwargs, })
