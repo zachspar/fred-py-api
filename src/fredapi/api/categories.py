@@ -39,7 +39,7 @@ class FredAPICategories(FredClient):
         "tag_names",
         "exclude_tag_names",
     )
-    def get_category_series(self, category_id: int = None, **kwargs) -> dict:
+    def get_category_series(self, category_id: int, **kwargs) -> dict:
         """Get category series by ID."""
         return self._get(f"category/series", {"category_id": category_id, **kwargs,})
 
@@ -49,7 +49,7 @@ class FredAPICategories(FredClient):
         return self._get(f"category/children", {"category_id": category_id, **kwargs,})
 
     @validate_api_args("api_key", "file_type", "category_id", "realtime_start", "realtime_end")
-    def get_category_related(self, category_id: int = None, **kwargs) -> dict:
+    def get_category_related(self, category_id: int, **kwargs) -> dict:
         """Get category related by ID."""
         return self._get(f"category/related", {"category_id": category_id, **kwargs,})
 
@@ -73,7 +73,7 @@ class FredAPICategories(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_category_tags(self, category_id: int = None, **kwargs) -> dict:
+    def get_category_tags(self, category_id: int, **kwargs) -> dict:
         """Get category tags by ID."""
         raise NotImplementedError("get_category_tags endpoint is not yet implemented.")
 
@@ -98,6 +98,6 @@ class FredAPICategories(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_category_related_tags(self, category_id: int = None, **kwargs) -> dict:
+    def get_category_related_tags(self, category_id: int, tag_names: str, **kwargs) -> dict:
         """Get category related tags by ID."""
         raise NotImplementedError("get_category_related_tags endpoint is not yet implemented.")
