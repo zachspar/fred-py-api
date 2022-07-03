@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/zachspar/fred-py-api/branch/main/graph/badge.svg?token=BG1948D8Y7)](https://codecov.io/gh/zachspar/fred-py-api)
+
 # Fred Python API
 A fully-featured FRED Python Wrapper.
 
