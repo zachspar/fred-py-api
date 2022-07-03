@@ -3,6 +3,8 @@
 name: Lint and Test fred-py-api
 
 on:
+  push:
+    branches: ["main"]
   pull_request:
     branches: [ "main" ]
 
@@ -38,3 +40,11 @@ jobs:
         coverage report -m
     - name: Upload coverage report
       uses: codecov/codecov-action@v2
+
+  pypi:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: Say Hello
+        run: |
+          echo "Hello World"
