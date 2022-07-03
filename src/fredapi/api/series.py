@@ -3,6 +3,7 @@
 Fred API Series Namespace Requests.
 """
 from .fred_client import FredClient
+from ..util.decorators import validate_api_args
 
 
 class FredAPISeries(FredClient):
@@ -22,66 +23,124 @@ class FredAPISeries(FredClient):
         fred/series/vintagedates - Get the dates in history when a series' data values were revised or new data values were released.
     """
 
-    def get_series_categories(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
+    def get_series_categories(self, series_id: str, **kwargs) -> dict:
         """Get series categories by ID."""
-        return self._get(f"series/categories", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/categories", {"series_id": series_id, **kwargs,})
 
-    def get_series_tags(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end", "order_by", "sort_order")
+    def get_series_tags(self, series_id: str, **kwargs) -> dict:
         """Get series tags by ID."""
-        return self._get(f"series/tags", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/tags", {"series_id": series_id, **kwargs,})
 
-    def get_series_search(self, search_text: str = None, search_type: str = "full_text", **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "search_text",
+        "search_type",
+        "realtime_start",
+        "realtime_end",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+        "filter_variable",
+        "filter_value",
+        "tag_names",
+        "exclude_tag_names",
+    )
+    def get_series_search(self, search_text: str, search_type: str = "full_text", **kwargs) -> dict:
         """Get series search by text."""
-        return self._get(f"series/search", {
-            "search_text": search_text,
-            "search_type": search_type,
-            **kwargs,
-        })
+        return self._get(f"series/search", {"search_text": search_text, "search_type": search_type, **kwargs,})
 
-    def get_series_search_tags(self, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "series_search_text",
+        "realtime_start",
+        "realtime_end",
+        "tag_names",
+        "tag_group_id",
+        "tag_search_text",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+    )
+    def get_series_search_tags(self, series_search_text: str, **kwargs) -> dict:
         """Get series search tags by text."""
-        raise NotImplementedError("get_series_search_tags endpoint is not yet implemented.")
+        return self._get(f"series/search/tags", {"series_search_text": series_search_text, **kwargs,})
 
-    def get_series_related_tags(self, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "series_search_text",
+        "realtime_start",
+        "realtime_end",
+        "tag_names",
+        "exclude_tag_names",
+        "tag_group_id",
+        "tag_search_text",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+    )
+    def get_series_search_related_tags(self, series_search_text: str, tag_names: str, **kwargs) -> dict:
         """Get series related tags by text."""
-        raise NotImplementedError("get_series_related_tags endpoint is not yet implemented.")
+        return self._get(
+            f"series/search/related_tags", {"series_search_text": series_search_text, "tag_names": tag_names, **kwargs,}
+        )
 
-    def get_series_observations(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "series_id",
+        "realtime_start",
+        "realtime_end",
+        "limit",
+        "offset",
+        "sort_order",
+        "observation_start",
+        "observation_end",
+        "units",
+        "frequency",
+        "aggregation_method",
+        "output_type",
+        "vintage_dates",
+    )
+    def get_series_observations(self, series_id: str, **kwargs) -> dict:
         """Get series observations by ID."""
-        return self._get(f"series/observations", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/observations", {"series_id": series_id, **kwargs,})
 
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "realtime_start",
+        "realtime_end",
+        "limit",
+        "offset",
+        "filter_value",
+        "start_time",
+        "end_time",
+    )
     def get_series_updates(self, **kwargs) -> dict:
         """Get series updates."""
-        return self._get(f"series/updates", {
-            **kwargs,
-        })
+        return self._get(f"series/updates", {**kwargs,})
 
-    def get_series_vintagedates(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key", "file_type", "series_id", "realtime_start", "realtime_end", "limit", "offset", "sort_order"
+    )
+    def get_series_vintagedates(self, series_id: str, **kwargs) -> dict:
         """Get series vintagedates by ID."""
-        return self._get(f"series/vintagedates", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/vintagedates", {"series_id": series_id, **kwargs,})
 
-    def get_series_release(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
+    def get_series_release(self, series_id: str, **kwargs) -> dict:
         """Get series release by ID."""
-        return self._get(f"series/release", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series/release", {"series_id": series_id, **kwargs,})
 
-    def get_series(self, series_id: str = None, **kwargs) -> dict:
+    @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
+    def get_series(self, series_id: str, **kwargs) -> dict:
         """Get series by ID."""
-        return self._get(f"series", {
-            "series_id": series_id,
-            **kwargs,
-        })
+        return self._get(f"series", {"series_id": series_id, **kwargs,})
