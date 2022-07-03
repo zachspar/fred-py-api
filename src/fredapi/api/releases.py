@@ -27,7 +27,12 @@ class FredAPIReleases(FredClient):
     )
     def get_releases(self, **kwargs) -> dict:
         """Get releases."""
-        return self._get(f"releases", {**kwargs,})
+        return self._get(
+            f"releases",
+            {
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -42,12 +47,23 @@ class FredAPIReleases(FredClient):
     )
     def get_releases_dates(self, **kwargs) -> dict:
         """Get releases dates."""
-        return self._get(f"releases/dates", {**kwargs,})
+        return self._get(
+            f"releases/dates",
+            {
+                **kwargs,
+            },
+        )
 
     @validate_api_args("api_key", "release_id", "file_type", "realtime_start", "realtime_end")
     def get_release(self, release_id: int, **kwargs) -> dict:
         """Get release by ID."""
-        return self._get(f"release", {"release_id": release_id, **kwargs,})
+        return self._get(
+            f"release",
+            {
+                "release_id": release_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -62,7 +78,13 @@ class FredAPIReleases(FredClient):
     )
     def get_release_dates(self, release_id: int, **kwargs) -> dict:
         """Get release dates by ID."""
-        return self._get(f"release/dates", {"release_id": release_id, **kwargs,})
+        return self._get(
+            f"release/dates",
+            {
+                "release_id": release_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -81,12 +103,24 @@ class FredAPIReleases(FredClient):
     )
     def get_release_series(self, release_id: int, **kwargs) -> dict:
         """Get release series by ID."""
-        return self._get(f"release/series", {"release_id": release_id, **kwargs,})
+        return self._get(
+            f"release/series",
+            {
+                "release_id": release_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args("api_key", "file_type", "release_id", "realtime_start", "realtime_end")
     def get_release_sources(self, release_id: int, **kwargs) -> dict:
         """Get release sources by ID."""
-        return self._get(f"release/sources", {"release_id": release_id, **kwargs,})
+        return self._get(
+            f"release/sources",
+            {
+                "release_id": release_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -104,7 +138,13 @@ class FredAPIReleases(FredClient):
     )
     def get_release_tags(self, release_id: int, **kwargs) -> dict:
         """Get release tags by ID."""
-        return self._get(f"release/tags", {"release_id": release_id, **kwargs,})
+        return self._get(
+            f"release/tags",
+            {
+                "release_id": release_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -123,11 +163,25 @@ class FredAPIReleases(FredClient):
     )
     def get_release_related_tags(self, release_id: int, tag_names: str, **kwargs) -> dict:
         """Get release related tags by ID."""
-        return self._get(f"release/related_tags", {"release_id": release_id, "tag_names": tag_names, **kwargs,})
+        return self._get(
+            f"release/related_tags",
+            {
+                "release_id": release_id,
+                "tag_names": tag_names,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key", "file_type", "release_id", "element_id", "include_observation_values", "observation_date"
     )
     def get_release_tables(self, release_id: int, element_id: int = None, **kwargs) -> dict:
         """Get release tables by ID."""
-        return self._get(f"release/tables", {"release_id": release_id, "element_id": element_id, **kwargs,})
+        return self._get(
+            f"release/tables",
+            {
+                "release_id": release_id,
+                "element_id": element_id,
+                **kwargs,
+            },
+        )
