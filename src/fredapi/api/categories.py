@@ -22,7 +22,13 @@ class FredAPICategories(FredClient):
     @validate_api_args("api_key", "file_type", "category_id")
     def get_category(self, category_id: int = None, **kwargs) -> dict:
         """Get category by ID."""
-        return self._get(f"category", {"category_id": category_id, **kwargs,})
+        return self._get(
+            f"category",
+            {
+                "category_id": category_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -41,17 +47,35 @@ class FredAPICategories(FredClient):
     )
     def get_category_series(self, category_id: int, **kwargs) -> dict:
         """Get category series by ID."""
-        return self._get(f"category/series", {"category_id": category_id, **kwargs,})
+        return self._get(
+            f"category/series",
+            {
+                "category_id": category_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args("api_key", "file_type", "category_id", "realtime_start", "realtime_end")
     def get_category_children(self, category_id: int = None, **kwargs) -> dict:
         """Get category children by ID."""
-        return self._get(f"category/children", {"category_id": category_id, **kwargs,})
+        return self._get(
+            f"category/children",
+            {
+                "category_id": category_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args("api_key", "file_type", "category_id", "realtime_start", "realtime_end")
     def get_category_related(self, category_id: int, **kwargs) -> dict:
         """Get category related by ID."""
-        return self._get(f"category/related", {"category_id": category_id, **kwargs,})
+        return self._get(
+            f"category/related",
+            {
+                "category_id": category_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -75,7 +99,13 @@ class FredAPICategories(FredClient):
     )
     def get_category_tags(self, category_id: int, **kwargs) -> dict:
         """Get category tags by ID."""
-        return self._get(f"category/tags", {"category_id": category_id, **kwargs,})
+        return self._get(
+            f"category/tags",
+            {
+                "category_id": category_id,
+                **kwargs,
+            },
+        )
 
     @validate_api_args(
         "api_key",
@@ -100,4 +130,11 @@ class FredAPICategories(FredClient):
     )
     def get_category_related_tags(self, category_id: int, tag_names: str, **kwargs) -> dict:
         """Get category related tags by ID."""
-        return self._get(f"category/related_tags", {"category_id": category_id, "tag_names": tag_names, **kwargs,})
+        return self._get(
+            f"category/related_tags",
+            {
+                "category_id": category_id,
+                "tag_names": tag_names,
+                **kwargs,
+            },
+        )
