@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import unittest
 
-from fredapi import FredAPISeries
 from requests import get
 
+from src.fredapi import FredAPISeries
 from tests.const import BASE_FRED_URL
 
 

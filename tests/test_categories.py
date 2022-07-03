@@ -4,9 +4,9 @@ Test the Fred API Categories Namespace.
 """
 import unittest
 
-from fredapi import FredAPICategories
 from requests import get
 
+from src.fredapi import FredAPICategories
 from tests.const import BASE_FRED_URL
 
 
