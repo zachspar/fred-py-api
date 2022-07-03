@@ -3,6 +3,7 @@
 Fred API Tags Namespace.
 """
 from .fred_client import FredClient
+from ..util.decorators import validate_api_args
 
 
 class FredAPITags(FredClient):
@@ -15,14 +16,53 @@ class FredAPITags(FredClient):
         fred/tags/series - Get the series matching tags.
     """
 
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "realtime_start",
+        "realtime_end",
+        "tag_names",
+        "tag_group_id",
+        "search_text",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+    )
     def get_tags(self, **kwargs) -> dict:
         """Get tags."""
-        raise NotImplementedError("get_tags endpoint is not yet implemented.")
+        return self._get(f"tags", {**kwargs,})
 
-    def get_related_tags(self, tag_id: str = None, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "realtime_start",
+        "realtime_end",
+        "tag_names",
+        "exclude_tag_names",
+        "tag_group_id",
+        "search_text",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+    )
+    def get_related_tags(self, tag_names: str, **kwargs) -> dict:
         """Get related tags by ID."""
-        raise NotImplementedError("get_related_tags endpoint is not yet implemented.")
+        return self._get(f"related_tags", {"tag_names": tag_names, **kwargs,})
 
-    def get_tags_series(self, **kwargs) -> dict:
+    @validate_api_args(
+        "api_key",
+        "file_type",
+        "realtime_start",
+        "realtime_end",
+        "tag_names",
+        "exclude_tag_names",
+        "limit",
+        "offset",
+        "order_by",
+        "sort_order",
+    )
+    def get_tags_series(self, tag_names: str, **kwargs) -> dict:
         """Get tags series by ID."""
-        raise NotImplementedError("get_tags_series endpoint is not yet implemented.")
+        return self._get(f"tags/series", {"tag_names": tag_names, **kwargs,})
