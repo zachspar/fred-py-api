@@ -126,6 +126,7 @@ class FredAPISeries(FredClient):
     )
     def get_series_updates(self, **kwargs) -> dict:
         """Get series updates."""
+        # TODO FIXME: Validate start_time and end_time presence if applicable.
         return self._get(f"series/updates", {**kwargs,})
 
     @validate_api_args(
