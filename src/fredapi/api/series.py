@@ -24,12 +24,12 @@ class FredAPISeries(FredClient):
     """
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
-    def get_series_categories(self, series_id: str = None, **kwargs) -> dict:
+    def get_series_categories(self, series_id: str, **kwargs) -> dict:
         """Get series categories by ID."""
         return self._get(f"series/categories", {"series_id": series_id, **kwargs,})
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end", "order_by", "sort_order")
-    def get_series_tags(self, series_id: str = None, **kwargs) -> dict:
+    def get_series_tags(self, series_id: str, **kwargs) -> dict:
         """Get series tags by ID."""
         return self._get(f"series/tags", {"series_id": series_id, **kwargs,})
 
@@ -49,7 +49,7 @@ class FredAPISeries(FredClient):
         "tag_names",
         "exclude_tag_names",
     )
-    def get_series_search(self, search_text: str = None, search_type: str = "full_text", **kwargs) -> dict:
+    def get_series_search(self, search_text: str, search_type: str = "full_text", **kwargs) -> dict:
         """Get series search by text."""
         return self._get(f"series/search", {"search_text": search_text, "search_type": search_type, **kwargs,})
 
@@ -67,7 +67,7 @@ class FredAPISeries(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_series_search_tags(self, **kwargs) -> dict:
+    def get_series_search_tags(self, series_search_text: str, **kwargs) -> dict:
         """Get series search tags by text."""
         raise NotImplementedError("get_series_search_tags endpoint is not yet implemented.")
 
@@ -86,7 +86,7 @@ class FredAPISeries(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_series_related_tags(self, **kwargs) -> dict:
+    def get_series_search_related_tags(self, series_search_text: str, tag_names: str, **kwargs) -> dict:
         """Get series related tags by text."""
         raise NotImplementedError("get_series_related_tags endpoint is not yet implemented.")
 
@@ -107,7 +107,7 @@ class FredAPISeries(FredClient):
         "output_type",
         "vintage_dates",
     )
-    def get_series_observations(self, series_id: str = None, **kwargs) -> dict:
+    def get_series_observations(self, series_id: str, **kwargs) -> dict:
         """Get series observations by ID."""
         return self._get(f"series/observations", {"series_id": series_id, **kwargs,})
 
@@ -129,16 +129,16 @@ class FredAPISeries(FredClient):
     @validate_api_args(
         "api_key", "file_type", "series_id", "realtime_start", "realtime_end", "limit", "offset", "sort_order"
     )
-    def get_series_vintagedates(self, series_id: str = None, **kwargs) -> dict:
+    def get_series_vintagedates(self, series_id: str, **kwargs) -> dict:
         """Get series vintagedates by ID."""
         return self._get(f"series/vintagedates", {"series_id": series_id, **kwargs,})
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
-    def get_series_release(self, series_id: str = None, **kwargs) -> dict:
+    def get_series_release(self, series_id: str, **kwargs) -> dict:
         """Get series release by ID."""
         return self._get(f"series/release", {"series_id": series_id, **kwargs,})
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
-    def get_series(self, series_id: str = None, **kwargs) -> dict:
+    def get_series(self, series_id: str, **kwargs) -> dict:
         """Get series by ID."""
         return self._get(f"series", {"series_id": series_id, **kwargs,})
