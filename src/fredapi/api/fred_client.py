@@ -4,6 +4,7 @@ Fred API Client.
 """
 from http import HTTPStatus
 from os import environ
+from typing import Optional
 
 import requests
 
@@ -13,7 +14,7 @@ from .exceptions import FredAPIRequestError
 class FredClient(object):
     """Base Fred API."""
 
-    def __init__(self, api_key: str = None, base_client=None):
+    def __init__(self, api_key: str = None, base_client: Optional["FredClient"] = None):
         """Init client."""
         if not base_client and not api_key:
             api_key = environ.get("FRED_API_KEY", None)
@@ -39,6 +40,8 @@ class FredClient(object):
 
     def _get(self, endpoint: str = None, payload: dict = None) -> dict:
         """Invoke client get request."""
+        if not payload:
+            payload = {}
         try:
             resp = requests.get(f"{self.base_url}/{endpoint}", params={**self.base_params, **payload})
         except requests.exceptions.RequestException as e:
