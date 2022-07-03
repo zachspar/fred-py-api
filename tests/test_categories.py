@@ -3,15 +3,15 @@
 Test the Fred API Categories Namespace.
 """
 import unittest
-from requests import get
 
 from fredapi import FredAPICategories
+from requests import get
 
-from const import BASE_FRED_URL
+from tests.const import BASE_FRED_URL
 
 
-class TestFredAPICategory(unittest.TestCase):
-    """Test the Fred API Category Namespace."""
+class TestFredAPICategories(unittest.TestCase):
+    """Test the Fred API Categories Namespace."""
 
     def setUp(self):
         """Setup the test."""
