@@ -104,7 +104,7 @@ class FredAPIReleases(FredClient):
     )
     def get_release_tags(self, release_id: int, **kwargs) -> dict:
         """Get release tags by ID."""
-        raise NotImplementedError("get_release_tags endpoint is not yet implemented.")
+        return self._get(f"release/tags", {"release_id": release_id, **kwargs,})
 
     @validate_api_args(
         "api_key",
@@ -121,9 +121,9 @@ class FredAPIReleases(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_release_related_tags(self, release_id: int, **kwargs) -> dict:
+    def get_release_related_tags(self, release_id: int, tag_names: str, **kwargs) -> dict:
         """Get release related tags by ID."""
-        raise NotImplementedError("get_release_related_tags endpoint is not yet implemented.")
+        return self._get(f"release/related_tags", {"release_id": release_id, "tag_names": tag_names, **kwargs,})
 
     @validate_api_args(
         "api_key", "file_type", "release_id", "element_id", "include_observation_values", "observation_date"

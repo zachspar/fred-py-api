@@ -31,7 +31,7 @@ class FredAPITags(FredClient):
     )
     def get_tags(self, **kwargs) -> dict:
         """Get tags."""
-        raise NotImplementedError("get_tags endpoint is not yet implemented.")
+        return self._get(f"tags", {**kwargs,})
 
     @validate_api_args(
         "api_key",
@@ -49,7 +49,7 @@ class FredAPITags(FredClient):
     )
     def get_related_tags(self, tag_names: str, **kwargs) -> dict:
         """Get related tags by ID."""
-        raise NotImplementedError("get_related_tags endpoint is not yet implemented.")
+        return self._get(f"related_tags", {"tag_names": tag_names, **kwargs,})
 
     @validate_api_args(
         "api_key",
@@ -65,4 +65,4 @@ class FredAPITags(FredClient):
     )
     def get_tags_series(self, tag_names: str, **kwargs) -> dict:
         """Get tags series by ID."""
-        raise NotImplementedError("get_tags_series endpoint is not yet implemented.")
+        return self._get(f"tags/series", {"tag_names": tag_names, **kwargs,})

@@ -75,7 +75,7 @@ class FredAPICategories(FredClient):
     )
     def get_category_tags(self, category_id: int, **kwargs) -> dict:
         """Get category tags by ID."""
-        raise NotImplementedError("get_category_tags endpoint is not yet implemented.")
+        return self._get(f"category/tags", {"category_id": category_id, **kwargs,})
 
     @validate_api_args(
         "api_key",
@@ -100,4 +100,4 @@ class FredAPICategories(FredClient):
     )
     def get_category_related_tags(self, category_id: int, tag_names: str, **kwargs) -> dict:
         """Get category related tags by ID."""
-        raise NotImplementedError("get_category_related_tags endpoint is not yet implemented.")
+        return self._get(f"category/related_tags", {"category_id": category_id, "tag_names": tag_names, **kwargs,})

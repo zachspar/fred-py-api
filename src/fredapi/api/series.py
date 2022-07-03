@@ -69,7 +69,7 @@ class FredAPISeries(FredClient):
     )
     def get_series_search_tags(self, series_search_text: str, **kwargs) -> dict:
         """Get series search tags by text."""
-        raise NotImplementedError("get_series_search_tags endpoint is not yet implemented.")
+        return self._get(f"series/search/tags", {"series_search_text": series_search_text, **kwargs,})
 
     @validate_api_args(
         "api_key",
@@ -88,7 +88,9 @@ class FredAPISeries(FredClient):
     )
     def get_series_search_related_tags(self, series_search_text: str, tag_names: str, **kwargs) -> dict:
         """Get series related tags by text."""
-        raise NotImplementedError("get_series_related_tags endpoint is not yet implemented.")
+        return self._get(
+            f"series/search/related_tags", {"series_search_text": series_search_text, "tag_names": tag_names, **kwargs,}
+        )
 
     @validate_api_args(
         "api_key",
