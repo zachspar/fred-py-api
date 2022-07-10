@@ -28,7 +28,7 @@ class FredClient(object):
         else:
             raise TypeError(f"Invalid init type")
 
-        if len(self._api_key) != 32:
+        if not self._api_key.isalnum() or len(self._api_key) != 32:
             raise ValueError("Invalid API Key - must be 32 characters in length")
 
         self.base_url = "https://api.stlouisfed.org/fred"
