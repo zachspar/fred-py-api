@@ -11,9 +11,9 @@ class FredAPITags(FredClient):
     Fred API Tags Namespace.
 
     Endpoints:
-        fred/tags - Get all tags, search for tags, or get tags by name.
-        fred/related_tags - Get the related tags for one or more tags.
-        fred/tags/series - Get the series matching tags.
+        fred/tags - Get all tags, search for tags, or get tags by name. https://fred.stlouisfed.org/docs/api/fred/tags.html
+        fred/related_tags - Get the related tags for one or more tags. https://fred.stlouisfed.org/docs/api/fred/related_tags.html
+        fred/tags/series - Get the series matching tags. https://fred.stlouisfed.org/docs/api/fred/tags_series.html
     """
 
     @validate_api_args(
@@ -30,7 +30,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_tags(self, **kwargs) -> dict:
-        """Get tags."""
+        """Get tags. https://fred.stlouisfed.org/docs/api/fred/tags.html"""
         return self._get(
             f"tags",
             {
@@ -53,7 +53,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_related_tags(self, tag_names: str, **kwargs) -> dict:
-        """Get related tags by ID."""
+        """Get related tags by tag names. https://fred.stlouisfed.org/docs/api/fred/related_tags.html"""
         return self._get(
             f"related_tags",
             {
@@ -75,7 +75,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_tags_series(self, tag_names: str, **kwargs) -> dict:
-        """Get tags series by ID."""
+        """Get tags series by tag names. https://fred.stlouisfed.org/docs/api/fred/tags_series.html"""
         return self._get(
             f"tags/series",
             {
