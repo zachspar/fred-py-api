@@ -7,4 +7,6 @@ A fully-featured FRED Python Wrapper.
  - [fred-py-api Docs](https://github.com/zachspar/fred-py-api/wiki)
 
 ### FRED References:
+ - [Create an API Key Here](https://fredaccount.stlouisfed.org/apikey)
  - [API Documentation](https://fred.stlouisfed.org/docs/api/fred/)
+
