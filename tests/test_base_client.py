@@ -64,8 +64,9 @@ class TestBaseFredClient(unittest.TestCase):
         self.assertIsNotNone(self.client.get_api_key())
         self._unset_env_var()
         try:
-            another_client = FredClient("123456")
-            self.assertEqual("123456", another_client.get_api_key())
+            with self.assertRaises(ValueError):
+                FredClient("123456")
+            FredClient(FredClient("0000"+"x"*28).get_api_key())
         finally:
             self._set_env_var()
 
