@@ -3,7 +3,7 @@ import unittest
 
 from requests import get
 
-from src.fredapi import FredAPISources
+from src.fred import FredAPISources
 from tests.const import BASE_FRED_URL
 
 

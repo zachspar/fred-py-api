@@ -4,8 +4,8 @@ import unittest
 
 from requests import get
 
-from src.fredapi import FredAPIRequestError, BaseFredAPIError
-from src.fredapi.api.fred_client import FredClient
+from src.fred import FredAPIRequestError, BaseFredAPIError
+from src.fred.api.fred_client import FredClient
 
 
 class TestBaseFredClient(unittest.TestCase):
