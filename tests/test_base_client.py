@@ -66,7 +66,7 @@ class TestBaseFredClient(unittest.TestCase):
         try:
             with self.assertRaises(ValueError):
                 FredClient("123456")
-            FredClient(FredClient("0000"+"x"*28).get_api_key())
+            FredClient(FredClient("0000" + "x" * 28).get_api_key())
         finally:
             self._set_env_var()
 
