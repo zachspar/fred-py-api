@@ -11,21 +11,21 @@ class FredAPISeries(FredClient):
     Fred API Series Namespace.
 
     Endpoints:
-        fred/series - Get an economic data series.
-        fred/series/categories - Get the categories for an economic data series.
-        fred/series/observations - Get the observations or data values for an economic data series.
-        fred/series/release - Get the release for an economic data series.
-        fred/series/search - Get economic data series that match keywords.
-        fred/series/search/tags - Get the tags for a series search.
-        fred/series/search/related_tags - Get the related tags for a series search.
-        fred/series/tags - Get the tags for an economic data series.
-        fred/series/updates - Get economic data series sorted by when observations were updated on the FRED® server.
-        fred/series/vintagedates - Get the dates in history when a series' data values were revised or new data values were released.
+        fred/series - Get an economic data series. https://fred.stlouisfed.org/docs/api/fred/series.html
+        fred/series/categories - Get the categories for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_categories.html
+        fred/series/observations - Get the observations or data values for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_observations.html
+        fred/series/release - Get the release for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_release.html
+        fred/series/search - Get economic data series that match keywords. https://fred.stlouisfed.org/docs/api/fred/series_search.html
+        fred/series/search/tags - Get the tags for a series search. https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html
+        fred/series/search/related_tags - Get the related tags for a series search. https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html
+        fred/series/tags - Get the tags for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_tags.htmlj
+        fred/series/updates - Get economic data series sorted by when observations were updated on the FRED® server. https://fred.stlouisfed.org/docs/api/fred/series_updates.htmlj
+        fred/series/vintagedates - Get the dates in history when a series' data values were revised or new data values were released. https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html
     """
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series_categories(self, series_id: str, **kwargs) -> dict:
-        """Get series categories by ID."""
+        """Get series categories by series ID. https://fred.stlouisfed.org/docs/api/fred/series_categories.html"""
         return self._get(
             f"series/categories",
             {
@@ -36,7 +36,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end", "order_by", "sort_order")
     def get_series_tags(self, series_id: str, **kwargs) -> dict:
-        """Get series tags by ID."""
+        """Get series tags by series ID. https://fred.stlouisfed.org/docs/api/fred/series_tags.html"""
         return self._get(
             f"series/tags",
             {
@@ -62,7 +62,7 @@ class FredAPISeries(FredClient):
         "exclude_tag_names",
     )
     def get_series_search(self, search_text: str, search_type: str = "full_text", **kwargs) -> dict:
-        """Get series search by text."""
+        """Get series search by text. https://fred.stlouisfed.org/docs/api/fred/series_search.html"""
         return self._get(
             f"series/search",
             {
@@ -87,7 +87,7 @@ class FredAPISeries(FredClient):
         "sort_order",
     )
     def get_series_search_tags(self, series_search_text: str, **kwargs) -> dict:
-        """Get series search tags by text."""
+        """Get series search tags by text. https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html"""
         return self._get(
             f"series/search/tags",
             {
@@ -112,7 +112,7 @@ class FredAPISeries(FredClient):
         "sort_order",
     )
     def get_series_search_related_tags(self, series_search_text: str, tag_names: str, **kwargs) -> dict:
-        """Get series related tags by text."""
+        """Get series related tags by text. https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html"""
         return self._get(
             f"series/search/related_tags",
             {
@@ -140,7 +140,7 @@ class FredAPISeries(FredClient):
         "vintage_dates",
     )
     def get_series_observations(self, series_id: str, **kwargs) -> dict:
-        """Get series observations by ID."""
+        """Get series observations by series ID. https://fred.stlouisfed.org/docs/api/fred/series_observations.html"""
         return self._get(
             f"series/observations",
             {
@@ -161,7 +161,7 @@ class FredAPISeries(FredClient):
         "end_time",
     )
     def get_series_updates(self, **kwargs) -> dict:
-        """Get series updates."""
+        """Get series updates. https://fred.stlouisfed.org/docs/api/fred/series_updates.html"""
         # TODO FIXME: Validate start_time and end_time presence if applicable.
         return self._get(
             f"series/updates",
@@ -174,7 +174,7 @@ class FredAPISeries(FredClient):
         "api_key", "file_type", "series_id", "realtime_start", "realtime_end", "limit", "offset", "sort_order"
     )
     def get_series_vintagedates(self, series_id: str, **kwargs) -> dict:
-        """Get series vintagedates by ID."""
+        """Get series vintagedates by series ID. https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html"""
         return self._get(
             f"series/vintagedates",
             {
@@ -185,7 +185,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series_release(self, series_id: str, **kwargs) -> dict:
-        """Get series release by ID."""
+        """Get series release by series ID. https://fred.stlouisfed.org/docs/api/fred/series_release.html"""
         return self._get(
             f"series/release",
             {
@@ -196,7 +196,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series(self, series_id: str, **kwargs) -> dict:
-        """Get series by ID."""
+        """Get series by ID. https://fred.stlouisfed.org/docs/api/fred/series.html"""
         return self._get(
             f"series",
             {
