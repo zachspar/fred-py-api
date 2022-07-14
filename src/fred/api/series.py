@@ -2,8 +2,8 @@
 """
 Fred API Series Namespace Requests.
 """
-from .fred_client import FredClient
-from ..util.decorators import validate_api_args
+from ._fred_client import FredClient
+from .._util.decorators import validate_api_args
 
 
 class FredAPISeries(FredClient):
