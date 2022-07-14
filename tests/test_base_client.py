@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 import os
 import unittest
+from xml.dom.minidom import parseString
+from xml.etree import ElementTree as ET
 
 from requests import get
 
 from src.fred import FredAPIRequestError, BaseFredAPIError
-from src.fred.api.fred_client import FredClient
+from src.fred.api._fred_client import FredClient
 
 
 class TestBaseFredClient(unittest.TestCase):
@@ -28,13 +30,22 @@ class TestBaseFredClient(unittest.TestCase):
             "file_type": "json",
         }
 
-    def test_get_request_ok(self):
-        """Test instance method _get function."""
+    def test_get_request_json_ok(self):
+        """Test instance method _get function using JSON file_type."""
         res = self.client._get("/releases")
         self.assertIsNotNone(res)
         self.assertIsInstance(res, dict)
         real = get("https://api.stlouisfed.org/fred/releases", params=self.base_params)
         self.assertEqual(real.json(), res)
+
+    def test_get_request_xml_ok(self):
+        """Test instance method _get function using XML file_type."""
+        xml_params = {**self.base_params, "file_type": "xml", "limit": 5}
+        res = self.client._get("/releases", payload=xml_params)
+        self.assertIsNotNone(res)
+        self.assertIsInstance(res, ET.Element)
+        real = get("https://api.stlouisfed.org/fred/releases", params=xml_params)
+        self.assertEqual(parseString(real.content.decode()).toprettyxml(), parseString(ET.tostring(res)).toprettyxml())
 
     def test_raises_exception(self):
         """Test request raises exception."""
