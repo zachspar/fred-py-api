@@ -4,7 +4,8 @@ Fred API Client.
 """
 from http import HTTPStatus
 from os import environ
-from typing import Optional
+from typing import Optional, Union, Dict
+from xml.etree import ElementTree
 
 import requests
 
@@ -41,7 +42,7 @@ class FredClient(object):
         """Get API key."""
         return self._api_key
 
-    def _get(self, endpoint: str = None, payload: dict = None) -> dict:
+    def _get(self, endpoint: str = None, payload: dict = None) -> Union[Dict, ElementTree.Element]:
         """Invoke client get request."""
         if not payload:
             payload = {}
@@ -51,4 +52,7 @@ class FredClient(object):
             raise FredAPIRequestError(f"Error invoking Fred API: {e}", None)
         if resp.status_code != HTTPStatus.OK:
             raise FredAPIRequestError(resp.text, resp.status_code)
+
+        if payload.get("file_type", "json") == "xml":
+            return ElementTree.fromstring(resp.content)
         return resp.json()
