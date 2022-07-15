@@ -2,7 +2,7 @@
 """
 Fred API Tags Namespace.
 """
-from ._fred_client import FredClient
+from ._fred_client import FredClient, JsonOrXml
 from .._util.decorators import validate_api_args
 
 
@@ -29,7 +29,7 @@ class FredAPITags(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_tags(self, **kwargs) -> dict:
+    def get_tags(self, **kwargs) -> JsonOrXml:
         """Get tags. https://fred.stlouisfed.org/docs/api/fred/tags.html"""
         return self._get(
             f"tags",
@@ -52,7 +52,7 @@ class FredAPITags(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_related_tags(self, tag_names: str, **kwargs) -> dict:
+    def get_related_tags(self, tag_names: str, **kwargs) -> JsonOrXml:
         """Get related tags by tag names. https://fred.stlouisfed.org/docs/api/fred/related_tags.html"""
         return self._get(
             f"related_tags",
@@ -74,7 +74,7 @@ class FredAPITags(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_tags_series(self, tag_names: str, **kwargs) -> dict:
+    def get_tags_series(self, tag_names: str, **kwargs) -> JsonOrXml:
         """Get tags series by tag names. https://fred.stlouisfed.org/docs/api/fred/tags_series.html"""
         return self._get(
             f"tags/series",
