@@ -17,3 +17,15 @@ class FredAPI(FredAPISeries, FredAPIReleases, FredAPICategories, FredAPISources,
     """
 
     pass
+
+
+__all__ = [
+    "BaseFredAPIError",
+    "FredAPIRequestError",
+    "FredAPI",
+    "FredAPICategories",
+    "FredAPIReleases",
+    "FredAPISeries",
+    "FredAPISources",
+    "FredAPITags",
+]
