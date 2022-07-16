@@ -2,7 +2,7 @@
 """
 Fred API for Categories Namespace.
 """
-from ._fred_client import FredClient
+from ._fred_client import FredClient, JsonOrXml
 from .._util.decorators import validate_api_args
 
 
@@ -20,7 +20,7 @@ class FredAPICategories(FredClient):
     """
 
     @validate_api_args("api_key", "file_type", "category_id")
-    def get_category(self, category_id: int = None, **kwargs) -> dict:
+    def get_category(self, category_id: int = None, **kwargs) -> JsonOrXml:
         """Get category by ID. https://fred.stlouisfed.org/docs/api/fred/category.html"""
         return self._get(
             f"category",
@@ -45,7 +45,7 @@ class FredAPICategories(FredClient):
         "tag_names",
         "exclude_tag_names",
     )
-    def get_category_series(self, category_id: int, **kwargs) -> dict:
+    def get_category_series(self, category_id: int, **kwargs) -> JsonOrXml:
         """Get category series by category ID. https://fred.stlouisfed.org/docs/api/fred/category_series.html"""
         return self._get(
             f"category/series",
@@ -56,7 +56,7 @@ class FredAPICategories(FredClient):
         )
 
     @validate_api_args("api_key", "file_type", "category_id", "realtime_start", "realtime_end")
-    def get_category_children(self, category_id: int = None, **kwargs) -> dict:
+    def get_category_children(self, category_id: int = None, **kwargs) -> JsonOrXml:
         """Get category children by category ID. https://fred.stlouisfed.org/docs/api/fred/category_children.html"""
         return self._get(
             f"category/children",
@@ -67,7 +67,7 @@ class FredAPICategories(FredClient):
         )
 
     @validate_api_args("api_key", "file_type", "category_id", "realtime_start", "realtime_end")
-    def get_category_related(self, category_id: int, **kwargs) -> dict:
+    def get_category_related(self, category_id: int, **kwargs) -> JsonOrXml:
         """Get category related by category ID. https://fred.stlouisfed.org/docs/api/fred/category_related.html"""
         return self._get(
             f"category/related",
@@ -97,7 +97,7 @@ class FredAPICategories(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_category_tags(self, category_id: int, **kwargs) -> dict:
+    def get_category_tags(self, category_id: int, **kwargs) -> JsonOrXml:
         """Get category tags by category ID. https://fred.stlouisfed.org/docs/api/fred/category_tags.html"""
         return self._get(
             f"category/tags",
@@ -128,7 +128,7 @@ class FredAPICategories(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_category_related_tags(self, category_id: int, tag_names: str, **kwargs) -> dict:
+    def get_category_related_tags(self, category_id: int, tag_names: str, **kwargs) -> JsonOrXml:
         """Get category related tags by category ID and tag names. https://fred.stlouisfed.org/docs/api/fred/category_related_tags.html"""
         return self._get(
             f"category/related_tags",

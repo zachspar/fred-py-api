@@ -4,12 +4,15 @@ Fred API Client.
 """
 from http import HTTPStatus
 from os import environ
-from typing import Optional, Union, Dict
+from typing import Optional, Dict, TypeVar
 from xml.etree import ElementTree
 
 import requests
 
 from .exceptions import FredAPIRequestError
+
+
+JsonOrXml = TypeVar("JsonOrXml", Dict, ElementTree.Element)
 
 
 class FredClient(object):
@@ -42,7 +45,7 @@ class FredClient(object):
         """Get API key."""
         return self._api_key
 
-    def _get(self, endpoint: str = None, payload: dict = None) -> Union[Dict, ElementTree.Element]:
+    def _get(self, endpoint: str = None, payload: dict = None) -> JsonOrXml:
         """Invoke client get request."""
         if not payload:
             payload = {}

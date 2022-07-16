@@ -2,7 +2,7 @@
 """
 Fred API for Releases Namespace.
 """
-from ._fred_client import FredClient
+from ._fred_client import FredClient, JsonOrXml
 from .._util.decorators import validate_api_args
 
 
@@ -25,7 +25,7 @@ class FredAPIReleases(FredClient):
     @validate_api_args(
         "api_key", "file_type", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"
     )
-    def get_releases(self, **kwargs) -> dict:
+    def get_releases(self, **kwargs) -> JsonOrXml:
         """Get releases. https://fred.stlouisfed.org/docs/api/fred/releases.html"""
         return self._get(
             f"releases",
@@ -45,7 +45,7 @@ class FredAPIReleases(FredClient):
         "sort_order",
         "include_release_dates_with_no_data",
     )
-    def get_releases_dates(self, **kwargs) -> dict:
+    def get_releases_dates(self, **kwargs) -> JsonOrXml:
         """Get releases dates. https://fred.stlouisfed.org/docs/api/fred/releases_dates.html"""
         return self._get(
             f"releases/dates",
@@ -55,7 +55,7 @@ class FredAPIReleases(FredClient):
         )
 
     @validate_api_args("api_key", "release_id", "file_type", "realtime_start", "realtime_end")
-    def get_release(self, release_id: int, **kwargs) -> dict:
+    def get_release(self, release_id: int, **kwargs) -> JsonOrXml:
         """Get release by ID. https://fred.stlouisfed.org/docs/api/fred/release.html"""
         return self._get(
             f"release",
@@ -76,7 +76,7 @@ class FredAPIReleases(FredClient):
         "sort_order",
         "include_release_dates_with_no_data",
     )
-    def get_release_dates(self, release_id: int, **kwargs) -> dict:
+    def get_release_dates(self, release_id: int, **kwargs) -> JsonOrXml:
         """Get release dates by release ID. https://fred.stlouisfed.org/docs/api/fred/release_dates.html"""
         return self._get(
             f"release/dates",
@@ -101,7 +101,7 @@ class FredAPIReleases(FredClient):
         "tag_names",
         "exclude_tag_names",
     )
-    def get_release_series(self, release_id: int, **kwargs) -> dict:
+    def get_release_series(self, release_id: int, **kwargs) -> JsonOrXml:
         """Get release series by release ID. https://fred.stlouisfed.org/docs/api/fred/release_series.html"""
         return self._get(
             f"release/series",
@@ -112,7 +112,7 @@ class FredAPIReleases(FredClient):
         )
 
     @validate_api_args("api_key", "file_type", "release_id", "realtime_start", "realtime_end")
-    def get_release_sources(self, release_id: int, **kwargs) -> dict:
+    def get_release_sources(self, release_id: int, **kwargs) -> JsonOrXml:
         """Get release sources by release ID. https://fred.stlouisfed.org/docs/api/fred/release_sources.html"""
         return self._get(
             f"release/sources",
@@ -136,7 +136,7 @@ class FredAPIReleases(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_release_tags(self, release_id: int, **kwargs) -> dict:
+    def get_release_tags(self, release_id: int, **kwargs) -> JsonOrXml:
         """Get release tags by release ID. https://fred.stlouisfed.org/docs/api/fred/release_tags.html"""
         return self._get(
             f"release/tags",
@@ -161,7 +161,7 @@ class FredAPIReleases(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_release_related_tags(self, release_id: int, tag_names: str, **kwargs) -> dict:
+    def get_release_related_tags(self, release_id: int, tag_names: str, **kwargs) -> JsonOrXml:
         """Get release related tags by release ID and tag names.
         https://fred.stlouisfed.org/docs/api/fred/release_related_tags.html"""
         return self._get(
@@ -176,7 +176,7 @@ class FredAPIReleases(FredClient):
     @validate_api_args(
         "api_key", "file_type", "release_id", "element_id", "include_observation_values", "observation_date"
     )
-    def get_release_tables(self, release_id: int, element_id: int = None, **kwargs) -> dict:
+    def get_release_tables(self, release_id: int, element_id: int = None, **kwargs) -> JsonOrXml:
         """Get release tables by release ID and element ID.
         https://fred.stlouisfed.org/docs/api/fred/release_tables.html"""
         return self._get(
