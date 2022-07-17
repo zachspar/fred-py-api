@@ -5,14 +5,14 @@ Fred API Client.
 from http import HTTPStatus
 from os import environ
 from typing import Optional, Dict, TypeVar
-from xml.etree import ElementTree
+from xml.etree import ElementTree as ET
 
 import requests
 
 from .exceptions import FredAPIRequestError
 
 
-JsonOrXml = TypeVar("JsonOrXml", Dict, ElementTree.Element)
+JsonOrXml = TypeVar("JsonOrXml", Dict, ET.Element)
 
 
 class FredClient(object):
@@ -57,5 +57,5 @@ class FredClient(object):
             raise FredAPIRequestError(resp.text, resp.status_code)
 
         if payload.get("file_type", "json") == "xml":
-            return ElementTree.fromstring(resp.content)
+            return ET.fromstring(resp.content)
         return resp.json()
