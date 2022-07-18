@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0", "requests>=2.17.3",]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fred_py_api"
-version = "0.1.3"
+name = "fred-py-api"
+version = "0.1.4"
 authors = [
   { name="Zachary Spar", email="zachspar@gmail.com" },
   { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
