@@ -4,6 +4,7 @@ Fred API core.
 """
 from .categories import FredAPICategories
 from .exceptions import BaseFredAPIError, FredAPIRequestError
+from ._fred_client import JsonOrXml
 from .releases import FredAPIReleases
 from .series import FredAPISeries
 from .sources import FredAPISources
@@ -17,3 +18,16 @@ class FredAPI(FredAPISeries, FredAPIReleases, FredAPICategories, FredAPISources,
     """
 
     pass
+
+
+__all__ = [
+    "BaseFredAPIError",
+    "FredAPIRequestError",
+    "FredAPI",
+    "FredAPICategories",
+    "FredAPIReleases",
+    "FredAPISeries",
+    "FredAPISources",
+    "FredAPITags",
+    "JsonOrXml",
+]

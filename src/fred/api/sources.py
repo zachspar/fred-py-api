@@ -2,8 +2,13 @@
 """
 Fred API Sources Namespace.
 """
-from ._fred_client import FredClient
+from ._fred_client import *
 from .._util.decorators import validate_api_args
+
+
+__all__ = [
+    "FredAPISources",
+]
 
 
 class FredAPISources(FredClient):
@@ -19,7 +24,7 @@ class FredAPISources(FredClient):
     @validate_api_args(
         "api_key", "file_type", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"
     )
-    def get_sources(self, **kwargs) -> dict:
+    def get_sources(self, **kwargs) -> JsonOrXml:
         """Get sources. https://fred.stlouisfed.org/docs/api/fred/sources.html"""
         return self._get(
             f"sources",
@@ -29,7 +34,7 @@ class FredAPISources(FredClient):
         )
 
     @validate_api_args("api_key", "file_type", "source_id", "realtime_start", "realtime_end")
-    def get_source(self, source_id: int, **kwargs) -> dict:
+    def get_source(self, source_id: int, **kwargs) -> JsonOrXml:
         """Get source by ID. https://fred.stlouisfed.org/docs/api/fred/source.html"""
         return self._get(
             f"source",
@@ -50,7 +55,7 @@ class FredAPISources(FredClient):
         "order_by",
         "sort_order",
     )
-    def get_source_releases(self, source_id: int, **kwargs) -> dict:
+    def get_source_releases(self, source_id: int, **kwargs) -> JsonOrXml:
         """Get source releases by source ID. https://fred.stlouisfed.org/docs/api/fred/source_releases.html"""
         return self._get(
             f"source/releases",
