@@ -13,7 +13,7 @@ description = "A fully featured FRED API client library for Python."
 readme = "README.md"
 requires-python = ">=3.6"
 classifiers = [
-    "Development Status :: 4 - Production/Stable",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Financial and Insurance Industry",
     "Intended Audience :: Science/Research",
