@@ -2,8 +2,13 @@
 """
 Fred API for Releases Namespace.
 """
-from ._fred_client import FredClient, JsonOrXml
+from ._fred_client import *
 from .._util.decorators import validate_api_args
+
+
+__all__ = [
+    "FredAPIReleases",
+]
 
 
 class FredAPIReleases(FredClient):
