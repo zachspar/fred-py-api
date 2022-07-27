@@ -4,6 +4,12 @@ A collection of FredAPI exceptions.
 """
 
 
+__all__ = [
+    "BaseFredAPIError",
+    "FredAPIRequestError",
+]
+
+
 class BaseFredAPIError(Exception):
     """Base class for all API errors."""
 

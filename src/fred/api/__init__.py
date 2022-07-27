@@ -4,6 +4,7 @@ Fred API core.
 """
 from .categories import FredAPICategories
 from .exceptions import BaseFredAPIError, FredAPIRequestError
+from ._fred_client import JsonOrXml
 from .releases import FredAPIReleases
 from .series import FredAPISeries
 from .sources import FredAPISources
@@ -28,4 +29,5 @@ __all__ = [
     "FredAPISeries",
     "FredAPISources",
     "FredAPITags",
+    "JsonOrXml",
 ]

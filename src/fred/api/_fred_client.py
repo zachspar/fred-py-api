@@ -12,6 +12,12 @@ import requests
 from .exceptions import FredAPIRequestError
 
 
+__all__ = [
+    "FredClient",
+    "JsonOrXml",
+]
+
+
 JsonOrXml = TypeVar("JsonOrXml", Dict, ET.Element)
 
 
