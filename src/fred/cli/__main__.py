@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import os
 
+from click import echo, style
+
 from ..api import FredAPI
 from . import _fred_cli
 
@@ -8,7 +10,9 @@ from . import _fred_cli
 if __name__ == "__main__":
     # set API key
     api_key = os.environ.get("FRED_API_KEY", None)
-    assert api_key is not None, "FRED_API_KEY environment variable must be set."
+    if api_key is None:
+        echo(style("ERROR: FRED_API_KEY environment variable is not set!", fg="red"))
+        exit(1)
 
     # run cli
     _fred_cli(
