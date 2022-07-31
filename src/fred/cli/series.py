@@ -7,10 +7,16 @@ import click
 from ..api import FredAPISeries
 
 
-@click.command()
+@click.group()
 @click.pass_context
 def series(ctx):
     """
-    Series namespace API.
+    Series CLI Namespace.
     """
+    pass
+
+
+@series.command()
+def get_series_observations():
+    """Get series observations."""
     pass
