@@ -2,6 +2,8 @@
 """
 FRED CLI - Sources Namespace.
 """
+import json
+
 import click
 
 from ..api import BaseFredAPIError
@@ -29,8 +31,7 @@ def get_sources(ctx, args: tuple):
     Get sources.
     """
     try:
-        data = ctx.obj["client"].get_sources(**generate_api_kwargs(args))
-        click.echo(data)
+        click.echo(json.dumps(ctx.obj["client"].get_sources(**generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
 
@@ -44,8 +45,7 @@ def get_source(ctx, source_id: int, args: tuple):
     Get source by ID.
     """
     try:
-        data = ctx.obj["client"].get_source(source_id, **generate_api_kwargs(args))
-        click.echo(data)
+        click.echo(json.dumps(ctx.obj["client"].get_source(source_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
 
@@ -59,7 +59,6 @@ def get_source_releases(ctx, source_id: int, args: tuple):
     Get source releases by ID.
     """
     try:
-        data = ctx.obj["client"].get_source_releases(source_id, **generate_api_kwargs(args))
-        click.echo(data)
+        click.echo(json.dumps(ctx.obj["client"].get_source_releases(source_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
