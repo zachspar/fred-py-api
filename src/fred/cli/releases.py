@@ -4,13 +4,16 @@ FRED CLI - Releases Namespace.
 """
 import click
 
-from ..api import FredAPIReleases
+
+__all__ = [
+    "releases",
+]
 
 
-@click.command()
+@click.group(invoke_without_command=True)
 @click.pass_context
 def releases(ctx):
     """
-    Releases namespace API.
+    Releases CLI Namespace.
     """
     pass

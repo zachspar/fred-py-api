@@ -4,7 +4,7 @@ import os
 from click import echo, style
 
 from ..api import FredAPI
-from . import _fred_cli
+from . import fred_cli
 
 
 if __name__ == "__main__":
@@ -15,7 +15,7 @@ if __name__ == "__main__":
         exit(1)
 
     # run cli
-    _fred_cli(
+    fred_cli(
         obj={
             "api_key": api_key,
             "client": FredAPI(api_key=api_key),

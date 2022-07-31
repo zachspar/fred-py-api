@@ -4,13 +4,16 @@ FRED CLI - Tags Namespace.
 """
 import click
 
-from ..api import FredAPITags
+
+__all__ = [
+    "tags",
+]
 
 
-@click.command()
+@click.group(invoke_without_command=True)
 @click.pass_context
 def tags(ctx):
     """
-    Tags namespace API.
+    Tags CLI Namespace.
     """
     pass

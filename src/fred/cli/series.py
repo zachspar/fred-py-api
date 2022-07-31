@@ -6,6 +6,7 @@ import json
 
 import click
 
+from .. import BaseFredAPIError
 from .._util import generate_api_kwargs
 
 
@@ -28,4 +29,9 @@ def series():
 @click.pass_context
 def get_series_observations(ctx, series_id: str, args: tuple):
     """Get series observations."""
-    click.echo(json.dumps(ctx.obj["client"].get_series_observations(series_id, **generate_api_kwargs(args)), indent=4))
+    try:
+        click.echo(
+            json.dumps(ctx.obj["client"].get_series_observations(series_id, **generate_api_kwargs(args)), indent=4)
+        )
+    except (ValueError, BaseFredAPIError) as e:
+        click.echo(click.style(e, fg="red"))

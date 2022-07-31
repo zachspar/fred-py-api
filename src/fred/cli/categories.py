@@ -4,13 +4,16 @@ FRED CLI - Categories Namespace.
 """
 import click
 
-from ..api import FredAPICategories
+
+__all__ = [
+    "categories",
+]
 
 
-@click.command()
+@click.group(invoke_without_command=True)
 @click.pass_context
 def categories(ctx):
     """
-    Categories namespace API.
+    Categories CLI Namespace.
     """
     pass

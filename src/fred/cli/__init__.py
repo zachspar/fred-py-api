@@ -2,16 +2,23 @@
 """CLI Core."""
 from click import CommandCollection
 
+from .categories import categories
+from .releases import releases
 from .series import series
+from .sources import sources
+from .tags import tags
 
 
 __all__ = [
-    "_fred_cli",
+    "fred_cli",
 ]
 
-
-_fred_cli = CommandCollection(
+fred_cli = CommandCollection(
     sources=[
+        categories,
+        releases,
         series,
+        sources,
+        tags,
     ]
 )
