@@ -6,7 +6,7 @@ import json
 
 import click
 
-from ._util import generate_api_kwargs
+from .._util import generate_api_kwargs
 
 
 __all__ = [
