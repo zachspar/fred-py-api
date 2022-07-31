@@ -2,14 +2,13 @@
 """
 FRED CLI - Series Namespace.
 """
+import json
+
 import click
 
-from ..api import FredAPISeries
 
-
-@click.group()
-@click.pass_context
-def series(ctx):
+@click.group(invoke_without_command=True)
+def series():
     """
     Series CLI Namespace.
     """
@@ -17,6 +16,8 @@ def series(ctx):
 
 
 @series.command()
-def get_series_observations():
+@click.option("--series-id", "-s", required=True, type=click.STRING, help="Series ID.")
+@click.pass_context
+def get_series_observations(ctx, series_id: str):
     """Get series observations."""
-    pass
+    click.echo(json.dumps(ctx.obj["client"].get_series_observations(series_id, limit=5), indent=4))

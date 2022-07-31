@@ -9,7 +9,13 @@ import click
 from .series import series
 
 
-_fred_cli = click.CommandCollection(sources=[series,])
+_fred_cli = click.CommandCollection(
+    sources=[
+        series,
+    ]
+)
 
 
-__all__ = ["_fred_cli", ]
+__all__ = [
+    "_fred_cli",
+]

@@ -13,7 +13,7 @@ def sources(ctx):
     """
     Sources namespace API.
     """
-    ctx.obj["client"]: FredAPISources = FredAPISources(ctx.obj['api_key'])
+    ctx.obj["client"]: FredAPISources = FredAPISources(ctx.obj["api_key"])
 
 
 @sources.command()
