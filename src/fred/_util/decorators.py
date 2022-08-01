@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
+"""
+FRED API Decorators.
+"""
 from functools import wraps
+
+
+__all__ = [
+    "validate_api_args",
+]
 
 
 def validate_api_args(*valid_args):
