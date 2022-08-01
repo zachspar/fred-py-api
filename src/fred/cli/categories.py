@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 
-@click.group(invoke_without_command=True)
+@click.group()
 @click.pass_context
 def categories(ctx):
     """

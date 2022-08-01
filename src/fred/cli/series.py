@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 
-@click.group(invoke_without_command=True)
+@click.group()
 def series():
     """
     Series CLI Namespace.
