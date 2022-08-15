@@ -7,7 +7,7 @@ from ..api import FredAPI
 from . import fred_cli
 
 
-if __name__ == "__main__":
+def run_cli():
     # set API key
     api_key = os.environ.get("FRED_API_KEY", None)
     if api_key is None:
@@ -21,3 +21,7 @@ if __name__ == "__main__":
             "client": FredAPI(api_key=api_key),
         }
     )
+
+
+if __name__ == "__main__":
+    run_cli()

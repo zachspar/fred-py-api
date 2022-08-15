@@ -31,9 +31,7 @@ def categories(ctx):
 def get_category(ctx, category_id: int, args: tuple):
     """Get a category."""
     try:
-        click.echo(
-            json.dumps(ctx.obj["client"].get_category(category_id, **generate_api_kwargs(args)), indent=4)
-        )
+        click.echo(json.dumps(ctx.obj["client"].get_category(category_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
 
@@ -87,9 +85,7 @@ def get_category_series(ctx, category_id: int, args: tuple):
 def get_category_tags(ctx, category_id: int, args: tuple):
     """Get FRED tags for a category."""
     try:
-        click.echo(
-            json.dumps(ctx.obj["client"].get_category_tags(category_id, **generate_api_kwargs(args)), indent=4)
-        )
+        click.echo(json.dumps(ctx.obj["client"].get_category_tags(category_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
 
@@ -106,5 +102,3 @@ def get_category_related_tags(ctx, category_id: int, args: tuple):
         )
     except (ValueError, BaseFredAPIError) as e:
         click.echo(click.style(e, fg="red"))
-
-

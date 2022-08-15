@@ -18,5 +18,3 @@ def generate_api_kwargs(arguments: tuple) -> dict:
         except IndexError:
             pass
     return api_kwargs
-
-
