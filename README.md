@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/zachspar/fred-py-api/branch/main/graph/badge.svg?token=BG1948D8Y7)](https://codecov.io/gh/zachspar/fred-py-api)
 
 # Fred Python API
-A fully-featured FRED Python Wrapper.
+A fully-featured FRED Command Line Interface & Python API Wrapper.
 
 ## Documentation:
  - [fred-py-api Wiki](https://github.com/zachspar/fred-py-api/wiki)
@@ -11,4 +11,3 @@ A fully-featured FRED Python Wrapper.
 ### FRED References:
  - [Create an API Key Here](https://fredaccount.stlouisfed.org/apikey)
  - [API Documentation](https://fred.stlouisfed.org/docs/api/fred/)
-
