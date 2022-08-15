@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fred-py-api"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Zachary Spar", email="zachspar@gmail.com" },
   { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
@@ -13,7 +13,7 @@ description = "A fully featured FRED API client library for Python."
 readme = "README.md"
 requires-python = ">=3.6"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Financial and Insurance Industry",
     "Intended Audience :: Science/Research",
