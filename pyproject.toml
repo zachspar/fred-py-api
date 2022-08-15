@@ -1,15 +1,15 @@
 [build-system]
-requires = ["setuptools>=61.0", "requests>=2.17.3",]
+requires = ["setuptools>=61.0",]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "fred-py-api"
-version = "1.0.1"
+version = "1.1.0"
 authors = [
   { name="Zachary Spar", email="zachspar@gmail.com" },
   { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
 ]
-description = "A fully featured FRED API client library for Python."
+description = "A fully featured FRED CLI & API client library for Python."
 readme = "README.md"
 requires-python = ">=3.6"
 classifiers = [
@@ -27,7 +27,11 @@ classifiers = [
 ]
 dependencies = [
   "requests>=2.17.3",
+  "click>=7.0",
 ]
+
+[project.scripts]
+fred = "fred.cli:__main__.run_cli"
 
 [project.urls]
 "Homepage" = "https://github.com/zachspar/fred_py_api"
