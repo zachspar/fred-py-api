@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import unittest
 
-from src.fred._util import generate_api_kwargs
+from fred._util import generate_api_kwargs
 
 
 class TestCLIUtils(unittest.TestCase):

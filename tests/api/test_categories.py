@@ -6,7 +6,7 @@ import unittest
 
 from requests import get
 
-from src.fred import FredAPICategories
+from fred import FredAPICategories
 from tests.const import BASE_FRED_URL
 
 

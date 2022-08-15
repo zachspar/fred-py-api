@@ -6,8 +6,8 @@ from xml.etree import ElementTree as ET
 
 from requests import get
 
-from src.fred import FredAPIRequestError, BaseFredAPIError
-from src.fred.api._fred_client import FredClient
+from fred import FredAPIRequestError, BaseFredAPIError
+from fred.api._fred_client import FredClient
 
 
 class TestBaseFredClient(unittest.TestCase):
