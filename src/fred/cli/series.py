@@ -31,7 +31,7 @@ def get_series(ctx, series_id: str, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_series(series_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -45,7 +45,7 @@ def get_series_categories(ctx, series_id: str, args: tuple):
             json.dumps(ctx.obj["client"].get_series_categories(series_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -59,7 +59,7 @@ def get_series_observations(ctx, series_id: str, args: tuple):
             json.dumps(ctx.obj["client"].get_series_observations(series_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -71,20 +71,24 @@ def get_series_release(ctx, series_id: str, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_series_release(series_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
 @click.option("--search-text", "-t", required=True, type=click.STRING, help="Search text.")
-@click.option("--search-type", "-s", required=True, type=click.STRING, help="Search text.")
+@click.option("--search-type", "-s", required=False, type=click.STRING, help="Search type.", default="full_text")
 @click.argument("args", nargs=-1)
 @click.pass_context
 def get_series_search(ctx, search_text: str, search_type: str, args: tuple):
     """Get series search."""
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_series_search(search_text, search_type, **generate_api_kwargs(args)), indent=4))
+        click.echo(
+            json.dumps(
+                ctx.obj["client"].get_series_search(search_text, search_type, **generate_api_kwargs(args)), indent=4
+            )
+        )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -100,7 +104,7 @@ def get_series_search_tags(ctx, series_search_text: str, args: tuple):
             )
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -113,12 +117,14 @@ def get_series_search_related_tags(ctx, series_search_text: str, tag_names: str,
     try:
         click.echo(
             json.dumps(
-                ctx.obj["client"].get_series_search_related_tags(series_search_text, teag_names **generate_api_kwargs(args)),
+                ctx.obj["client"].get_series_search_related_tags(
+                    series_search_text, tag_names, **generate_api_kwargs(args)
+                ),
                 indent=4,
             )
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -130,7 +136,7 @@ def get_series_tags(ctx, series_id: str, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_series_tags(series_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -141,7 +147,7 @@ def get_series_updates(ctx, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_series_updates(**generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @series.command()
@@ -155,4 +161,4 @@ def get_series_vintagedates(ctx, series_id: str, args: tuple):
             json.dumps(ctx.obj["client"].get_series_vintagedates(series_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)

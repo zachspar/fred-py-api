@@ -34,7 +34,7 @@ def get_tags(ctx, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_tags(**generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @tags.command()
@@ -48,7 +48,7 @@ def get_related_tags(ctx, tag_names: str, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_related_tags(tag_names, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @tags.command()
@@ -62,4 +62,4 @@ def get_tags_series(ctx, tag_names: str, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_tags_series(tag_names, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)

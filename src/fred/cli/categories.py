@@ -33,7 +33,7 @@ def get_category(ctx, category_id: int, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_category(category_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @categories.command()
@@ -47,7 +47,7 @@ def get_category_children(ctx, category_id: int, args: tuple):
             json.dumps(ctx.obj["client"].get_category_children(category_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @categories.command()
@@ -61,7 +61,7 @@ def get_category_related(ctx, category_id: int, args: tuple):
             json.dumps(ctx.obj["client"].get_category_related(category_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @categories.command()
@@ -75,7 +75,7 @@ def get_category_series(ctx, category_id: int, args: tuple):
             json.dumps(ctx.obj["client"].get_category_series(category_id, **generate_api_kwargs(args)), indent=4)
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @categories.command()
@@ -87,7 +87,7 @@ def get_category_tags(ctx, category_id: int, args: tuple):
     try:
         click.echo(json.dumps(ctx.obj["client"].get_category_tags(category_id, **generate_api_kwargs(args)), indent=4))
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
 
 
 @categories.command()
@@ -99,7 +99,10 @@ def get_category_related_tags(ctx, category_id: int, tag_names: str, args: tuple
     """Get related FRED tags for a category."""
     try:
         click.echo(
-            json.dumps(ctx.obj["client"].get_category_related_tags(category_id, tag_names, **generate_api_kwargs(args)), indent=4)
+            json.dumps(
+                ctx.obj["client"].get_category_related_tags(category_id, tag_names, **generate_api_kwargs(args)),
+                indent=4,
+            )
         )
     except (ValueError, BaseFredAPIError) as e:
-        click.echo(click.style(e, fg="red"))
+        raise click.UsageError(click.style(e, fg="red"), ctx)
