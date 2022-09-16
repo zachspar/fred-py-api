@@ -37,7 +37,7 @@ def get_sources(ctx, args: tuple):
 
 
 @sources.command()
-@click.option("--source-id", "-s", type=click.INT, required=True, help="Source ID.")
+@click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
 def get_source(ctx, source_id: int, args: tuple):
@@ -51,7 +51,7 @@ def get_source(ctx, source_id: int, args: tuple):
 
 
 @sources.command()
-@click.option("--source-id", "-s", type=click.INT, required=True, help="Source ID.")
+@click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
 def get_source_releases(ctx, source_id: int, args: tuple):
