@@ -3,10 +3,11 @@
 FRED CLI - Series Namespace.
 """
 import json
+import os
 
 import click
 
-from .. import BaseFredAPIError
+from .. import BaseFredAPIError, FredAPISeries
 from .._util import generate_api_kwargs
 
 __all__ = [
@@ -15,11 +16,14 @@ __all__ = [
 
 
 @click.group()
-def series():
+@click.option('--api-key')
+@click.pass_context
+def series(ctx):
     """
     Series CLI Namespace.
     """
-    pass
+    ctx.ensure_object(dict)
+    ctx.obj["client"] = FredAPISeries(api_key=os.environ.get("FRED_API_KEY"))
 
 
 @series.command()

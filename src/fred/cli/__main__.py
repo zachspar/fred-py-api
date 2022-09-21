@@ -16,6 +16,7 @@ def run_cli():
 
     # run cli
     fred_cli(
+        auto_envvar_prefix="FRED",
         obj={
             "api_key": api_key,
             "client": FredAPI(api_key=api_key),
