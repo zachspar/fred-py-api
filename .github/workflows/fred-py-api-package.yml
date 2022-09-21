@@ -21,6 +21,8 @@ jobs:
         python-version: ["3.10"]
     env:
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      TEST_FRED_API_KEY__API: ${{ secrets.TEST_FRED_API_KEY__API }}
+      TEST_FRED_API_KEY__CLI: ${{ secrets.TEST_FRED_API_KEY__CLI }}
 
     steps:
     - uses: actions/checkout@v3
