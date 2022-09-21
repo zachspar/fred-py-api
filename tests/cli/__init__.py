@@ -13,7 +13,7 @@ class BaseCLITest(TestCase):
 
     def setUp(self) -> None:
         self.runner = CliRunner()
-        self.patcher = mock.patch.dict(os.environ, {"FRED_API_KEY": os.environ.get("TEST_FRED_API_KEY_CLI")})
+        self.patcher = mock.patch.dict(os.environ, {"FRED_API_KEY": os.environ.get("TEST_FRED_API_KEY__CLI")})
         self.patcher.start()
         self.client = FredAPI(api_key=os.environ.get("FRED_API_KEY"))
         self.obj = {
