@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-import unittest
+import os
 
 from requests import get
 
 from fred import FredAPITags
+from tests.api import BaseAPITest
 from tests.const import BASE_FRED_URL
 
 
-class TestFredAPITags(unittest.TestCase):
+class TestFredAPITags(BaseAPITest):
     """Test the Fred API Tags Namespace."""
 
     def setUp(self):
         """Setup the test."""
-        self.client = FredAPITags()
-        self.base_params = {
-            "api_key": self.client.get_api_key(),
-            "file_type": "json",
-        }
+        super().setUp()
+        self.client = FredAPITags(api_key=os.environ.get("FRED_API_KEY"))
 
     def test_get_tags(self):
         """Test the get_tags method."""

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-import unittest
+from unittest import TestCase
 from xml.dom.minidom import parseString
 from xml.etree import ElementTree as ET
 
@@ -10,7 +10,7 @@ from fred import FredAPIRequestError, BaseFredAPIError
 from fred.api._fred_client import FredClient
 
 
-class TestBaseFredClient(unittest.TestCase):
+class TestBaseFredClient(TestCase):
     """Test functionality of base FredClient."""
 
     @staticmethod
@@ -24,7 +24,7 @@ class TestBaseFredClient(unittest.TestCase):
 
     def setUp(self) -> None:
         """Setup the test."""
-        self.client = FredClient()
+        self.client = FredClient(api_key=os.environ.get("FRED_API_KEY"))
         self.base_params = {
             "api_key": self.client.get_api_key(),
             "file_type": "json",
@@ -89,7 +89,7 @@ class TestBaseFredClient(unittest.TestCase):
         finally:
             self._set_env_var()
 
-        og_client = FredClient()
+        og_client = FredClient(api_key=os.environ.get("FRED_API_KEY"))
         self._unset_env_var()
         try:
             FredClient(base_client=og_client)

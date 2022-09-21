@@ -2,24 +2,22 @@
 """
 Test the Fred API Categories Namespace.
 """
-import unittest
+import os
 
 from requests import get
 
 from fred import FredAPICategories
+from tests.api import BaseAPITest
 from tests.const import BASE_FRED_URL
 
 
-class TestFredAPICategories(unittest.TestCase):
+class TestFredAPICategories(BaseAPITest):
     """Test the Fred API Categories Namespace."""
 
     def setUp(self):
         """Setup the test."""
-        self.client = FredAPICategories()
-        self.base_params = {
-            "api_key": self.client.get_api_key(),
-            "file_type": "json",
-        }
+        super().setUp()
+        self.client = FredAPICategories(api_key=os.environ.get("FRED_API_KEY"))
 
     def test_get_category(self):
         """Test the get_category method."""
