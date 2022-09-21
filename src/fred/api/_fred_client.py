@@ -3,7 +3,6 @@
 Fred API Client.
 """
 from http import HTTPStatus
-from os import environ
 from typing import Optional, Dict, TypeVar
 from xml.etree import ElementTree as ET
 
@@ -26,8 +25,6 @@ class FredClient(object):
 
     def __init__(self, api_key: str = None, base_client: Optional["FredClient"] = None):
         """Init client."""
-        if not base_client and not api_key:
-            api_key = environ.get("FRED_API_KEY", None)
 
         assert api_key or base_client, "Fred API Client or API Key required to use FredAPI"
 

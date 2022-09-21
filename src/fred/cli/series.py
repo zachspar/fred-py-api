@@ -16,14 +16,12 @@ __all__ = [
 
 
 @click.group()
-@click.option('--api-key')
 @click.pass_context
 def series(ctx):
     """
     Series CLI Namespace.
     """
-    ctx.ensure_object(dict)
-    ctx.obj["client"] = FredAPISeries(api_key=os.environ.get("FRED_API_KEY"))
+    pass
 
 
 @series.command()
