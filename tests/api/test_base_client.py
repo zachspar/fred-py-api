@@ -20,13 +20,14 @@ class TestBaseFredClient(TestCase):
 
     def _set_env_var(self):
         """Set environment variable."""
-        os.environ["FRED_API_KEY"] = self.client.get_api_key()
+        os.environ["FRED_API_KEY"] = self.api_key
 
     def setUp(self) -> None:
         """Setup the test."""
-        self.client = FredClient(api_key=os.environ.get("FRED_API_KEY"))
+        self.api_key = os.environ.get("FRED_API_KEY")
+        self.client = FredClient(api_key=self.api_key)
         self.base_params = {
-            "api_key": self.client.get_api_key(),
+            "api_key": self.api_key,
             "file_type": "json",
         }
 
