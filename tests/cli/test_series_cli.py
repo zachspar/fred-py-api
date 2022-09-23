@@ -117,24 +117,3 @@ class TestCLISeries(BaseCLITest):
             },
         ]
         self.run_test_cases(series, tests)
-
-    def test_get_series_search(self):
-        """CLI test for get-series-search."""
-        tests = [
-            {
-                "msg": "Basic get-series-search test Ok",
-                "exit_code": 0,
-                "command": [
-                    "get-series-search",
-                    "--search-text",
-                    "federal",
-                ],
-                "output": {
-                    "dict": get(
-                        "https://api.stlouisfed.org/fred/series/search",
-                        params={"series_id": "dff", **self.base_params},
-                    ).json(),
-                },
-            },
-        ]
-        self.run_test_cases(series, tests)
