@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-from click.exceptions import UsageError
-
 from fred.cli.sources import sources
 from tests.cli import BaseCLITest
 
@@ -20,7 +18,6 @@ class TestCLISources(BaseCLITest):
                 "msg": "Basic fail test",
                 "exit_code": 2,
                 "command": ["get-sources", "asdf=asdf"],
-                "raises": UsageError,
             },
         ]
         self.run_test_cases(sources, tests)
