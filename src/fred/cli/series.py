@@ -3,11 +3,10 @@
 FRED CLI - Series Namespace.
 """
 import json
-import os
 
 import click
 
-from .. import BaseFredAPIError, FredAPISeries
+from .. import BaseFredAPIError
 from .._util import generate_api_kwargs
 
 __all__ = [
