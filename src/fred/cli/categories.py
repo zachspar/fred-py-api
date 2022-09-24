@@ -2,13 +2,10 @@
 """
 FRED CLI - Categories Namespace.
 """
-import json
-
 import click
 
 from .. import BaseFredAPIError
-from .._util import generate_api_kwargs
-
+from .._util import generate_api_kwargs, serialize
 
 __all__ = [
     "categories",
@@ -31,7 +28,7 @@ def categories(ctx):
 def get_category(ctx, category_id: int, args: tuple):
     """Get a category."""
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_category(category_id, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_category(category_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -43,9 +40,7 @@ def get_category(ctx, category_id: int, args: tuple):
 def get_category_children(ctx, category_id: int, args: tuple):
     """Get the child categories."""
     try:
-        click.echo(
-            json.dumps(ctx.obj["client"].get_category_children(category_id, **generate_api_kwargs(args)), indent=4)
-        )
+        click.echo(serialize(ctx.obj["client"].get_category_children(category_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -57,9 +52,7 @@ def get_category_children(ctx, category_id: int, args: tuple):
 def get_category_related(ctx, category_id: int, args: tuple):
     """Get related categories."""
     try:
-        click.echo(
-            json.dumps(ctx.obj["client"].get_category_related(category_id, **generate_api_kwargs(args)), indent=4)
-        )
+        click.echo(serialize(ctx.obj["client"].get_category_related(category_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -71,9 +64,7 @@ def get_category_related(ctx, category_id: int, args: tuple):
 def get_category_series(ctx, category_id: int, args: tuple):
     """Get series in a category."""
     try:
-        click.echo(
-            json.dumps(ctx.obj["client"].get_category_series(category_id, **generate_api_kwargs(args)), indent=4)
-        )
+        click.echo(serialize(ctx.obj["client"].get_category_series(category_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -85,7 +76,7 @@ def get_category_series(ctx, category_id: int, args: tuple):
 def get_category_tags(ctx, category_id: int, args: tuple):
     """Get FRED tags for a category."""
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_category_tags(category_id, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_category_tags(category_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -99,10 +90,7 @@ def get_category_related_tags(ctx, category_id: int, tag_names: str, args: tuple
     """Get related FRED tags for a category."""
     try:
         click.echo(
-            json.dumps(
-                ctx.obj["client"].get_category_related_tags(category_id, tag_names, **generate_api_kwargs(args)),
-                indent=4,
-            )
+            serialize(ctx.obj["client"].get_category_related_tags(category_id, tag_names, **generate_api_kwargs(args)))
         )
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)

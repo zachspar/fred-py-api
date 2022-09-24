@@ -2,12 +2,10 @@
 """
 FRED CLI - Tags Namespace.
 """
-import json
-
 import click
 
 from .. import BaseFredAPIError
-from .._util import generate_api_kwargs
+from .._util import generate_api_kwargs, serialize
 
 
 __all__ = [
@@ -32,7 +30,7 @@ def get_tags(ctx, args: tuple):
     Get tags.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_tags(**generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_tags(**generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -46,7 +44,7 @@ def get_related_tags(ctx, tag_names: str, args: tuple):
     Get related tags.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_related_tags(tag_names, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_related_tags(tag_names, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -60,6 +58,6 @@ def get_tags_series(ctx, tag_names: str, args: tuple):
     Get tag series.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_tags_series(tag_names, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_tags_series(tag_names, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)

@@ -2,12 +2,10 @@
 """
 FRED CLI - Sources Namespace.
 """
-import json
-
 import click
 
 from ..api import BaseFredAPIError
-from .._util import generate_api_kwargs
+from .._util import generate_api_kwargs, serialize
 
 
 __all__ = [
@@ -31,7 +29,7 @@ def get_sources(ctx, args: tuple):
     Get sources.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_sources(**generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_sources(**generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -45,7 +43,7 @@ def get_source(ctx, source_id: int, args: tuple):
     Get source by ID.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_source(source_id, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_source(source_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
 
@@ -59,6 +57,6 @@ def get_source_releases(ctx, source_id: int, args: tuple):
     Get source releases by ID.
     """
     try:
-        click.echo(json.dumps(ctx.obj["client"].get_source_releases(source_id, **generate_api_kwargs(args)), indent=4))
+        click.echo(serialize(ctx.obj["client"].get_source_releases(source_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
