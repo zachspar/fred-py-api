@@ -52,6 +52,31 @@ class TestCLIReleases(BaseCLITest):
         ]
         self.run_test_cases(releases, tests)
 
+    def test_get_release_dates(self):
+        """CLI test for get-release-dates."""
+        tests = [
+            {
+                "msg": "Basic get-release-dates test Ok",
+                "exit_code": 0,
+                "command": ["get-release-dates", "-i", "53"],
+                "output": {
+                    "dict": get(
+                        "https://api.stlouisfed.org/fred/release/dates",
+                        params={"release_id": "53", **self.base_params},
+                    ).json(),
+                },
+            },
+            {
+                "msg": "Basic get-release-dates test Fail",
+                "exit_code": 2,
+                "command": ["get-release-dates", "-i", "53", "asdf=asdf"],
+                "output": {
+                    "contains": "Error: asdf is not a valid argument for get_release_dates.",
+                },
+            },
+        ]
+        self.run_test_cases(releases, tests)
+
     def test_get_release(self):
         """CLI test for get-release."""
         tests = [
@@ -71,30 +96,6 @@ class TestCLIReleases(BaseCLITest):
                 "command": ["get-release", "-i", "53", "asdf=asdf"],
                 "output": {
                     "contains": "Error: asdf is not a valid argument for get_release.",
-                },
-            },
-        ]
-        self.run_test_cases(releases, tests)
-
-    def get_release_dates(self):
-        """CLI test for get-release-dates."""
-        tests = [
-            {
-                "msg": "Basic get-release-dates test Ok",
-                "exit_code": 0,
-                "command": ["get-release-dates", "-i", "53"],
-                "output": {
-                    "dict": get(
-                        "https://api.stlouisfed.org/fred/release/dates", params={"release_id": "53", **self.base_params}
-                    ).json(),
-                },
-            },
-            {
-                "msg": "Basic get-release-dates test Fail",
-                "exit_code": 2,
-                "command": ["get-release-dates", "-i", "53", "asdf=asdf"],
-                "output": {
-                    "contains": "Error: asdf is not a valid argument for get_release_dates.",
                 },
             },
         ]
