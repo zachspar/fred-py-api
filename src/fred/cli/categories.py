@@ -22,7 +22,7 @@ def categories(ctx):
 
 
 @categories.command()
-@click.option("--category-id", "-c", required=True, type=click.STRING, help="Category ID.")
+@click.option("--category-id", "-i", required=True, type=click.STRING, help="Category ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
 def get_category(ctx, category_id: int, args: tuple):
