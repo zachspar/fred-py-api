@@ -4,8 +4,8 @@ from requests import get
 from fred.cli.categories import categories
 from tests.cli import BaseCLITest
 
-class TestCLICategories(BaseCLITest):
 
+class TestCLICategories(BaseCLITest):
     def test_get_category(self):
         """CLI test for get-category."""
         tests = [

@@ -33,7 +33,6 @@ class TestCLISources(BaseCLITest):
         ]
         self.run_test_cases(sources, tests)
 
-
     def test_get_source(self):
         """CLI test for get-source."""
         tests = [
@@ -59,7 +58,6 @@ class TestCLISources(BaseCLITest):
         ]
         self.run_test_cases(sources, tests)
 
-
     def test_get_source_releases(self):
         """CLI test for get-source-releases."""
         tests = [
@@ -84,5 +82,3 @@ class TestCLISources(BaseCLITest):
             },
         ]
         self.run_test_cases(sources, tests)
-
-

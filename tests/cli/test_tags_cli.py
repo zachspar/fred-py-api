@@ -4,8 +4,8 @@ from requests import get
 from fred.cli.tags import tags
 from tests.cli import BaseCLITest
 
-class TestCLITags(BaseCLITest):
 
+class TestCLITags(BaseCLITest):
     def test_get_tags(self):
         """CLI test for get-tags."""
         tests = [
