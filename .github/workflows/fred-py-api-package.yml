@@ -46,9 +46,6 @@ jobs:
         coverage report --omit="src/fred/cli/__main__.py","src/fred/cli/__init__.py" -m
     - name: Upload coverage report
       uses: codecov/codecov-action@v2
-      ignore:
-        - "src/fred/cli/__main__.py"
-        - "src/fred/cli/__init__.py"
 
   pypi:
     needs: build
