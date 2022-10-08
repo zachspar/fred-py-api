@@ -9,7 +9,7 @@ authors = [
   { name="Zachary Spar", email="zachspar@gmail.com" },
   { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
 ]
-description = "A fully featured FRED CLI & API client library for Python."
+description = "A fully featured FRED Command Line Interface & Python API client library."
 readme = "README.md"
 requires-python = ">=3.6"
 classifiers = [
