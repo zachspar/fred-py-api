@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
-import unittest
+import os
 
 from requests import get
 
-from src.fred import FredAPISources
+from fred import FredAPISources
+from tests.api import BaseAPITest
 from tests.const import BASE_FRED_URL
 
 
-class TestFredAPISources(unittest.TestCase):
+class TestFredAPISources(BaseAPITest):
     """Test the Fred API Sources Namespace."""
 
     def setUp(self):
         """Setup the test."""
-        self.client = FredAPISources()
-        self.base_params = {
-            "api_key": self.client.get_api_key(),
-            "file_type": "json",
-        }
+        super().setUp()
+        self.client = FredAPISources(api_key=os.environ.get("FRED_API_KEY"))
 
     def test_get_sources(self):
         """Test the get_sources method."""

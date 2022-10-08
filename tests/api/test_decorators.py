@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import unittest
 
-from src.fred._util.decorators import validate_api_args
+from fred._util.decorators import validate_api_args
 
 
 class TestDecorators(unittest.TestCase):

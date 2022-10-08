@@ -1,4 +1,5 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# This workflow will install Python dependencies, run tests and lint
+# On publish event, it will build and publish a package to PyPI
 
 name: Lint, Test & Upload fred-py-api
 
@@ -20,6 +21,8 @@ jobs:
         python-version: ["3.10"]
     env:
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      TEST_FRED_API_KEY__API: ${{ secrets.TEST_FRED_API_KEY__API }}
+      TEST_FRED_API_KEY__CLI: ${{ secrets.TEST_FRED_API_KEY__CLI }}
 
     steps:
     - uses: actions/checkout@v3
@@ -31,6 +34,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install requests coverage black==22.6.0
+        python -m pip install -e .
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with black
       run: |
@@ -38,7 +42,7 @@ jobs:
         black --line-length 120 --check ./
     - name: Test with coverage
       run: |
-        coverage run -m unittest discover -s tests
+        coverage run --source="src" --omit="src/fred/cli/__main__.py","src/fred/cli/__init__.py" -m unittest
         coverage report -m
     - name: Upload coverage report
       uses: codecov/codecov-action@v2
