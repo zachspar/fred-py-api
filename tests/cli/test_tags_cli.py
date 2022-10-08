@@ -37,18 +37,18 @@ class TestCLITags(BaseCLITest):
             {
                 "msg": "Basic get-related-tags test Ok",
                 "exit_code": 0,
-                "command": ["get-related-tags", "-t", "monetary+aggregates;weekly"],
+                "command": ["get-related-tags", "-t", "slovenia;food;oecd"],
                 "output": {
                     "dict": get(
                         "https://api.stlouisfed.org/fred/related_tags",
-                        params={"tag_names": "monetary+aggregates;weekly", **self.base_params},
+                        params={"tag_names": "slovenia;food;oecd", **self.base_params},
                     ).json(),
                 },
             },
             {
                 "msg": "Basic get-related_tags test Fail",
                 "exit_code": 2,
-                "command": ["get-related-tags", "-t", "monetary+aggregates;weekly", "asdf=asdf"],
+                "command": ["get-related-tags", "-t", "slovenia;food;oecd", "asdf=asdf"],
                 "output": {
                     "contains": "Error: asdf is not a valid argument for get_related_tags.",
                 },
@@ -62,20 +62,20 @@ class TestCLITags(BaseCLITest):
             {
                 "msg": "Basic get-tags-series test Ok",
                 "exit_code": 0,
-                "command": ["get-tags-series", "-t", "monetary+aggregates;weekly"],
+                "command": ["get-tags-series", "-t", "slovenia;food;oecd"],
                 "output": {
                     "dict": get(
                         "https://api.stlouisfed.org/fred/tags/series",
-                        params={"tag_names": "monetary+aggregates;weekly", **self.base_params},
+                        params={"tag_names": "slovenia;food;oecd", **self.base_params},
                     ).json(),
                 },
             },
             {
                 "msg": "Basic get-tags-series test Fail",
                 "exit_code": 2,
-                "command": ["get-tags-series", "-t", "monetary+aggregates;weekly", "asdf=asdf"],
+                "command": ["get-tags-series", "-t", "slovenia;food;oecd", "asdf=asdf"],
                 "output": {
-                    "contains": "Error: asdf is not a valid argument for get-tags-series.",
+                    "contains": "Error: asdf is not a valid argument for get_tags_series.",
                 },
             },
         ]

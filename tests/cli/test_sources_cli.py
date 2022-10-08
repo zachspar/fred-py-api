@@ -17,7 +17,7 @@ class TestCLISources(BaseCLITest):
                 "command": ["get-sources"],
                 "output": {
                     "dict": get(
-                        "https://api.stlouisfed.org/fred/tags/sources",
+                        "https://api.stlouisfed.org/fred/sources",
                         params={**self.base_params},
                     ).json(),
                 },
@@ -27,7 +27,7 @@ class TestCLISources(BaseCLITest):
                 "exit_code": 2,
                 "command": ["get-sources", "asdf=asdf"],
                 "output": {
-                    "contains": "Error: asdf is not a valid argument for get-tags-series.",
+                    "contains": "Error: asdf is not a valid argument for get_sources.",
                 },
             },
         ]
@@ -77,7 +77,7 @@ class TestCLISources(BaseCLITest):
                 "exit_code": 2,
                 "command": ["get-source-releases", "-i", "1", "asdf=asdf"],
                 "output": {
-                    "contains": "Error: asdf is not a valid argument for get_source-releases.",
+                    "contains": "Error: asdf is not a valid argument for get_source_releases.",
                 },
             },
         ]

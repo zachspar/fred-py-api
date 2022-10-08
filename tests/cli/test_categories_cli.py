@@ -12,7 +12,7 @@ class TestCLICategories(BaseCLITest):
             {
                 "msg": "Basic get-category test Ok",
                 "exit_code": 0,
-                "command": ["get-category", "-i", "53"],
+                "command": ["get-category", "-i", "125"],
                 "output": {
                     "dict": get(
                         "https://api.stlouisfed.org/fred/category",

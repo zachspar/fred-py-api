@@ -13,6 +13,7 @@ class BaseCLITest(TestCase):
     """Base CLI Test Case."""
 
     def setUp(self) -> None:
+        """Set up."""
         self.runner = CliRunner()
         self.patcher = mock.patch.dict(os.environ, {"FRED_API_KEY": os.environ.get("TEST_FRED_API_KEY__CLI")})
         self.patcher.start()
@@ -31,7 +32,9 @@ class BaseCLITest(TestCase):
         }
 
     def tearDown(self) -> None:
+        """Clean up."""
         super().tearDown()
+        # stop mocking API key
         self.patcher.stop()
 
     def run_test_cases(self, cli, tests: List[Dict]):
