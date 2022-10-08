@@ -3,13 +3,12 @@
 import click
 from click import group
 
+from fred import FredAPI
 from .categories import categories
 from .releases import releases
 from .series import series
 from .sources import sources
 from .tags import tags
-from fred import FredAPI
-
 
 __all__ = [
     "fred_cli",

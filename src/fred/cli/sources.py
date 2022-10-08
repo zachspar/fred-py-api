@@ -4,9 +4,8 @@ FRED CLI - Sources Namespace.
 """
 import click
 
-from ..api import BaseFredAPIError
 from .._util import generate_api_kwargs, serialize
-
+from ..api import BaseFredAPIError
 
 __all__ = [
     "sources",

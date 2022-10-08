@@ -10,7 +10,6 @@ import requests
 
 from .exceptions import FredAPIRequestError
 
-
 __all__ = [
     "FredClient",
     "JsonOrXml",

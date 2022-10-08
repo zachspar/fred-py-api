@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import click.exceptions
-
 from tests.cli import BaseCLITest
 
 
@@ -11,8 +9,8 @@ class TestCLIEntryPoint(BaseCLITest):
         """Test the CLI entry point."""
         from fred.cli.__main__ import run_cli
 
-        # ensure module runs without error
         self.assertIsNotNone(run_cli)
 
+        # make sure CLI exits with sys.exit()
         with self.assertRaises(SystemExit):
             run_cli()

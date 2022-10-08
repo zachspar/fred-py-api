@@ -7,7 +7,6 @@ import click
 from .. import BaseFredAPIError
 from .._util import generate_api_kwargs, serialize
 
-
 __all__ = [
     "releases",
 ]
