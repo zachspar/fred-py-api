@@ -1,8 +1,11 @@
+# typed: false
+# frozen_string_literal: true
+
 # fred-py-api Homebrew Formula
 class FredPyApi < Formula
   include Language::Python::Virtualenv
 
-  desc "A fully-featured FRED Command Line Interface & Python API wrapper."
+  desc "Fully featured FRED Command-line Interface & Python API wrapper"
   homepage "https://github.com/zachspar/fred-py-api"
   url "https://files.pythonhosted.org/packages/1e/7a/bb49f22f2ce33109ce5a5f8c7b85263cbc97bf9c9b44ba612c8380d3406f/fred-py-api-1.1.0.tar.gz"
   sha256 "f1eddf12fac2f26f656e317a11f61ec0129ba353187b659c20d05a600dba78c8"
@@ -41,20 +44,10 @@ class FredPyApi < Formula
   end
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
     virtualenv_install_with_resources
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test fred-py-api`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    system "fred"
   end
 end
