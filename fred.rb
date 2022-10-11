@@ -1,17 +1,22 @@
-# typed: false
-# frozen_string_literal: true
-
-# fred-py-api Homebrew Formula
-class FredPyApi < Formula
+class Fred < Formula
   include Language::Python::Virtualenv
 
   desc "Fully featured FRED Command-line Interface & Python API wrapper"
-  homepage "https://github.com/zachspar/fred-py-api"
+  homepage "https://fred.stlouisfed.org/docs/api/fred/"
   url "https://files.pythonhosted.org/packages/1e/7a/bb49f22f2ce33109ce5a5f8c7b85263cbc97bf9c9b44ba612c8380d3406f/fred-py-api-1.1.0.tar.gz"
   sha256 "f1eddf12fac2f26f656e317a11f61ec0129ba353187b659c20d05a600dba78c8"
   license "MIT"
 
-  depends_on "python"
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "9bc6e0ad74f29f56612611c3d9ee28f1d7903f8cc230d18100f52fac35cbeb2f"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b38b4ff1dc1f3ff4b0674ce949463bd14814817364a54c107c3344a5389a84a3"
+    sha256 cellar: :any_skip_relocation, monterey:       "2571bea5f0c8627ad5412e71df35701f20bc570140e2b9e3c0e7e3599dde2d45"
+    sha256 cellar: :any_skip_relocation, big_sur:        "60fabae8d4296af852d40f877f2771ed90b3fde6a4be7c0778c6f0f8a973f510"
+    sha256 cellar: :any_skip_relocation, catalina:       "fd910a7aaf68018c1c14e19e5893cf1784143e381ce99adf2e281aa14625dace"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "9e1180d8a7bd43ffcdf87d36613a7d7dd5b0704eacb88ac16e243314e5bbe218"
+  end
+
+  depends_on "python@3.10"
 
   resource "certifi" do
     url "https://files.pythonhosted.org/packages/cb/a4/7de7cd59e429bd0ee6521ba58a75adaec136d32f91a761b28a11d8088d44/certifi-2022.9.24.tar.gz"
@@ -48,6 +53,10 @@ class FredPyApi < Formula
   end
 
   test do
-    system "fred"
+    # assert output & ensure exit code is 2
+    # NOTE: this makes an API request to FRED with a purposely invalid API key
+    assert_match \
+      shell_output("#{bin}/fred --api-key sqwer1234asdfasdfqwer1234asdfsdf categories get-category -i 15", 2), \
+      "Bad Request.  The value for variable api_key is not registered."
   end
 end
