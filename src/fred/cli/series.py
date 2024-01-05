@@ -4,21 +4,23 @@ FRED CLI - Series Namespace.
 """
 import click
 
-from .. import BaseFredAPIError
-from .._util import generate_api_kwargs, serialize
+from .. import BaseFredAPIError, FredAPISeries
+from .._util import generate_api_kwargs, serialize, run_cli_callable, init_cli_context
 
 __all__ = [
     "series",
+    "run_series_cli",
 ]
 
 
 @click.group()
+@click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
 @click.pass_context
-def series(ctx):
+def series(ctx: click.Context, api_key: str):
     """
     Series CLI Namespace.
     """
-    pass
+    init_cli_context(ctx, api_key, FredAPISeries)
 
 
 @series.command()
@@ -148,3 +150,14 @@ def get_series_vintagedates(ctx, series_id: str, args: tuple):
         click.echo(serialize(ctx.obj["client"].get_series_vintagedates(series_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
+
+
+def run_series_cli():
+    """
+    Run the CLI for the Series Namespace.
+    """
+    run_cli_callable(cli_callable=series)
+
+
+if __name__ == "__main__":
+    run_series_cli()

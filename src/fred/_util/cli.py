@@ -3,13 +3,17 @@
 FRED CLI Utilities.
 """
 from json import dumps
-from typing import Union
+from typing import Union, Callable
 from xml.etree import ElementTree as ET
+
+import click
 
 
 __all__ = [
     "generate_api_kwargs",
     "serialize",
+    "run_cli_callable",
+    "init_cli_context",
 ]
 
 
@@ -32,3 +36,26 @@ def serialize(response_obj: Union[dict, ET.Element]) -> str:
         return ET.tostring(response_obj, encoding="unicode", method="xml")
     else:
         raise TypeError("response_obj must be a dict or xml.etree.ElementTree.Element")
+
+
+def run_cli_callable(cli_callable: Callable) -> None:
+    """
+    Run a CLI callable.
+    """
+    try:
+        cli_callable(auto_envvar_prefix="FRED")
+    except AssertionError:
+        click.echo(click.style("Error: FRED_API_KEY is not set!", fg="red"))
+
+
+def init_cli_context(ctx: click.Context, api_key: str, api_client: Callable) -> None:
+    """
+    Initialize a CLI context.
+    """
+    ctx.ensure_object(dict)
+
+    if "api_key" not in ctx.obj:
+        ctx.obj["api_key"] = api_key
+
+    if "client" not in ctx.obj:
+        ctx.obj["client"] = api_client(api_key=api_key)

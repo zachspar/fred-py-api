@@ -4,21 +4,20 @@ FRED CLI - Releases Namespace.
 """
 import click
 
-from .. import BaseFredAPIError
-from .._util import generate_api_kwargs, serialize
+from .. import BaseFredAPIError, FredAPIReleases
+from .._util import generate_api_kwargs, serialize, run_cli_callable, init_cli_context
 
-__all__ = [
-    "releases",
-]
+__all__ = ["releases", "run_releases_cli"]
 
 
 @click.group()
+@click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
 @click.pass_context
-def releases(ctx):
+def releases(ctx: click.Context, api_key: str):
     """
     Releases CLI Namespace.
     """
-    pass
+    init_cli_context(ctx, api_key, FredAPIReleases)
 
 
 @releases.command()
@@ -129,3 +128,14 @@ def get_release_tables(ctx, release_id: int, element_id: int, args: tuple):
         click.echo(serialize(ctx.obj["client"].get_release_tables(release_id, element_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
+
+
+def run_releases_cli():
+    """
+    Run the CLI for the Releases namespace.
+    """
+    run_cli_callable(cli_callable=releases)
+
+
+if __name__ == "__main__":
+    run_releases_cli()

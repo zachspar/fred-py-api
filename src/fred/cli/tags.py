@@ -4,21 +4,23 @@ FRED CLI - Tags Namespace.
 """
 import click
 
-from .. import BaseFredAPIError
-from .._util import generate_api_kwargs, serialize
+from .. import BaseFredAPIError, FredAPITags
+from .._util import generate_api_kwargs, serialize, run_cli_callable, init_cli_context
 
 __all__ = [
     "tags",
+    "run_tags_cli",
 ]
 
 
 @click.group()
+@click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
 @click.pass_context
-def tags(ctx):
+def tags(ctx: click.Context, api_key: str):
     """
     Tags CLI Namespace.
     """
-    pass
+    init_cli_context(ctx, api_key, FredAPITags)
 
 
 @tags.command()
@@ -60,3 +62,12 @@ def get_tags_series(ctx, tag_names: str, args: tuple):
         click.echo(serialize(ctx.obj["client"].get_tags_series(tag_names, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
+
+
+def run_tags_cli():
+    """Run the CLI for Tags namespace."""
+    run_cli_callable(cli_callable=tags)
+
+
+if __name__ == "__main__":
+    run_tags_cli()

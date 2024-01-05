@@ -4,21 +4,23 @@ FRED CLI - Categories Namespace.
 """
 import click
 
-from .. import BaseFredAPIError
-from .._util import generate_api_kwargs, serialize
+from .. import BaseFredAPIError, FredAPICategories
+from .._util import generate_api_kwargs, serialize, run_cli_callable, init_cli_context
 
 __all__ = [
     "categories",
+    "run_categories_cli",
 ]
 
 
 @click.group()
+@click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
 @click.pass_context
-def categories(ctx):
+def categories(ctx: click.Context, api_key: str):
     """
     Categories CLI Namespace.
     """
-    pass
+    init_cli_context(ctx, api_key, FredAPICategories)
 
 
 @categories.command()
@@ -94,3 +96,12 @@ def get_category_related_tags(ctx, category_id: int, tag_names: str, args: tuple
         )
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
+
+
+def run_categories_cli():
+    """Run the CLI for Categories namespace."""
+    run_cli_callable(cli_callable=categories)
+
+
+if __name__ == "__main__":
+    run_categories_cli()
