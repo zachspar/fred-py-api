@@ -15,14 +15,15 @@ class TestCLIEntryPoint(BaseCLITest):
         with self.assertRaises(SystemExit):
             run_fred_cli()
 
-    def test_fred_cli_entrypoint(self):
+    def test_fred_cli_entrypoint_no_api_key(self):
         """Test the CLI entry point from __init__."""
         from fred.cli import fred_cli
 
         self.assertIsNotNone(fred_cli)
 
-        result = self.runner.invoke(fred_cli, ["--help"])
-        self.assertEqual(result.exit_code, 0)
+        result = self.runner.invoke(fred_cli, ["--api-key", "fake_api_key", "tags"])
+        self.assertEqual(result.exit_code, 1)
+        self.assertTrue(isinstance(result.exception, ValueError))
 
     def test_categories_cli_entrypoint(self):
         """Test the CLI entry point from categories."""
