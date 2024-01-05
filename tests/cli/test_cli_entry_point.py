@@ -7,10 +7,10 @@ class TestCLIEntryPoint(BaseCLITest):
 
     def test_cli_entry_point_import_and_run(self):
         """Test the CLI entry point imports properly."""
-        from fred.cli.__main__ import run_cli
+        from fred.cli.__main__ import run_fred_cli
 
-        self.assertIsNotNone(run_cli)
+        self.assertIsNotNone(run_fred_cli)
 
         # make sure CLI exits with sys.exit()
         with self.assertRaises(SystemExit):
-            run_cli()
+            run_fred_cli()
