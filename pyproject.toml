@@ -38,7 +38,12 @@ dev = [
 ]
 
 [project.scripts]
-fred = "fred.cli:__main__.run_cli"
+fred = "fred.cli:__main__.run_fred_cli"
+categories = "fred.cli:categories.run_categories_cli"
+releases = "fred.cli:releases.run_releases_cli"
+series = "fred.cli:series.run_series_cli"
+sources = "fred.cli:sources.run_sources_cli"
+tags = "fred.cli:tags.run_tags_cli"
 
 [project.urls]
 "Homepage" = "https://github.com/zachspar/fred_py_api"
