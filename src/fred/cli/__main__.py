@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-import click
-
 from . import fred_cli
+from .._util import run_cli_callable
 
 
-def run_cli():
-    """Run the FRED CLI."""
-    try:
-        fred_cli(auto_envvar_prefix="FRED")
-    except AssertionError:
-        click.echo(click.style("Error: FRED_API_KEY is not set!", fg="red"))
+__all__ = [
+    "run_fred_cli",
+]
+
+
+def run_fred_cli():
+    """Run the CLI."""
+    run_cli_callable(cli_callable=fred_cli)
 
 
 if __name__ == "__main__":
-    run_cli()
+    run_fred_cli()

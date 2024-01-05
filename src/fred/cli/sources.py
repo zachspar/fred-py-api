@@ -4,26 +4,29 @@ FRED CLI - Sources Namespace.
 """
 import click
 
-from .._util import generate_api_kwargs, serialize
-from ..api import BaseFredAPIError
+from ..api import BaseFredAPIError, FredAPISources
+from .._util import generate_api_kwargs, serialize, run_cli_callable, init_cli_context
 
 __all__ = [
     "sources",
+    "run_sources_cli",
 ]
 
 
 @click.group()
-def sources():
+@click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
+@click.pass_context
+def sources(ctx: click.Context, api_key: str):
     """
     Sources CLI Namespace.
     """
-    pass
+    init_cli_context(ctx, api_key, FredAPISources)
 
 
 @sources.command()
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_sources(ctx, args: tuple):
+def get_sources(ctx: click.Context, args: tuple):
     """
     Get sources.
     """
@@ -37,7 +40,7 @@ def get_sources(ctx, args: tuple):
 @click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_source(ctx, source_id: int, args: tuple):
+def get_source(ctx: click.Context, source_id: int, args: tuple):
     """
     Get source by ID.
     """
@@ -51,7 +54,7 @@ def get_source(ctx, source_id: int, args: tuple):
 @click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_source_releases(ctx, source_id: int, args: tuple):
+def get_source_releases(ctx: click.Context, source_id: int, args: tuple):
     """
     Get source releases by ID.
     """
@@ -59,3 +62,14 @@ def get_source_releases(ctx, source_id: int, args: tuple):
         click.echo(serialize(ctx.obj["client"].get_source_releases(source_id, **generate_api_kwargs(args))))
     except (ValueError, BaseFredAPIError) as e:
         raise click.UsageError(click.style(e, fg="red"), ctx)
+
+
+def run_sources_cli():
+    """
+    Run the CLI for the Sources namespace.
+    """
+    run_cli_callable(cli_callable=sources)
+
+
+if __name__ == "__main__":
+    run_sources_cli()

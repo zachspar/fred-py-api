@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fred-py-api"
-version = "1.1.1"
+version = "1.1.2"
 authors = [
-  { name="Zachary Spar", email="zachspar@gmail.com" },
-  { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
+    { name="Zachary Spar", email="zachspar@gmail.com" },
+    { name="Prasiddha Parthsarthy", email="prasiddha@gmail.com" },
 ]
 description = "A fully featured FRED Command Line Interface & Python API client library."
 readme = "README.md"
@@ -26,13 +26,44 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  "requests>=2.17.3",
-  "click>=7.0",
+    "requests>=2.17.3",
+    "click>=7.0",
+]
+
+[project.optional-dependencies]
+ci = [
+    "black==22.6.0",
+    "coverage==6.4.2",
+]
+dev = [
+    "black==22.6.0",
+    "coverage==6.4.2",
+    "tox==3.25.1",
 ]
 
 [project.scripts]
-fred = "fred.cli:__main__.run_cli"
+fred = "fred.cli:__main__.run_fred_cli"
+categories = "fred.cli:categories.run_categories_cli"
+releases = "fred.cli:releases.run_releases_cli"
+series = "fred.cli:series.run_series_cli"
+sources = "fred.cli:sources.run_sources_cli"
+tags = "fred.cli:tags.run_tags_cli"
 
 [project.urls]
 "Homepage" = "https://github.com/zachspar/fred_py_api"
 "Bug Tracker" = "https://github.com/zachspar/fred_py_api/issues"
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+]
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.black]
+line-length = 120
