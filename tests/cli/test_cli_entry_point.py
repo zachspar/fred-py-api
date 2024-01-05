@@ -15,6 +15,16 @@ class TestCLIEntryPoint(BaseCLITest):
         with self.assertRaises(SystemExit):
             run_fred_cli()
 
+    def test_fred_cli_init_entrypoint_import_and_run(self):
+        """Test the CLI entry point from __init__."""
+        from fred.cli import fred_cli
+
+        self.assertIsNotNone(fred_cli)
+
+        # make sure CLI exits with sys.exit()
+        with self.assertRaises(SystemExit):
+            fred_cli()
+
     def test_categories_cli_entry_point_import_and_run(self):
         """Test the CLI entry point imports properly."""
         from fred.cli.categories import run_categories_cli
