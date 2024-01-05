@@ -31,6 +31,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+ci = [
+    "black==22.6.0",
+    "coverage==6.4.2",
+]
 dev = [
     "black==22.6.0",
     "coverage==6.4.2",
@@ -48,3 +52,18 @@ tags = "fred.cli:tags.run_tags_cli"
 [project.urls]
 "Homepage" = "https://github.com/zachspar/fred_py_api"
 "Bug Tracker" = "https://github.com/zachspar/fred_py_api/issues"
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "if __name__ == .__main__.:",
+]
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.black]
+line-length = 120
