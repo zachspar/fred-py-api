@@ -48,7 +48,7 @@ def run_cli_callable(cli_callable: Callable) -> None:
         click.echo(click.style("Error: FRED_API_KEY is not set!", fg="red"))
 
 
-def init_cli_context(ctx: click.Context, api_key: str, api_client: Callable) -> None:
+def init_cli_context(ctx: click.Context, api_key: str, api_client_class: Callable) -> None:
     """
     Initialize a CLI context.
     """
@@ -58,4 +58,4 @@ def init_cli_context(ctx: click.Context, api_key: str, api_client: Callable) -> 
         ctx.obj["api_key"] = api_key
 
     if "client" not in ctx.obj:
-        ctx.obj["client"] = api_client(api_key=api_key)
+        ctx.obj["client"] = api_client_class(api_key=api_key)

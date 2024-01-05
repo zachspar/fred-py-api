@@ -26,7 +26,7 @@ def sources(ctx: click.Context, api_key: str):
 @sources.command()
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_sources(ctx, args: tuple):
+def get_sources(ctx: click.Context, args: tuple):
     """
     Get sources.
     """
@@ -40,7 +40,7 @@ def get_sources(ctx, args: tuple):
 @click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_source(ctx, source_id: int, args: tuple):
+def get_source(ctx: click.Context, source_id: int, args: tuple):
     """
     Get source by ID.
     """
@@ -54,7 +54,7 @@ def get_source(ctx, source_id: int, args: tuple):
 @click.option("--source-id", "-i", type=click.INT, required=True, help="Source ID.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_source_releases(ctx, source_id: int, args: tuple):
+def get_source_releases(ctx: click.Context, source_id: int, args: tuple):
     """
     Get source releases by ID.
     """

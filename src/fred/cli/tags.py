@@ -26,7 +26,7 @@ def tags(ctx: click.Context, api_key: str):
 @tags.command()
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_tags(ctx, args: tuple):
+def get_tags(ctx: click.Context, args: tuple):
     """
     Get tags.
     """
@@ -40,7 +40,7 @@ def get_tags(ctx, args: tuple):
 @click.option("--tag-names", "-t", required=True, type=click.STRING, help="Tag Names.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_related_tags(ctx, tag_names: str, args: tuple):
+def get_related_tags(ctx: click.Context, tag_names: str, args: tuple):
     """
     Get related tags.
     """
@@ -54,7 +54,7 @@ def get_related_tags(ctx, tag_names: str, args: tuple):
 @click.option("--tag-names", "-t", required=True, type=click.STRING, help="Tag Names.")
 @click.argument("args", nargs=-1)
 @click.pass_context
-def get_tags_series(ctx, tag_names: str, args: tuple):
+def get_tags_series(ctx: click.Context, tag_names: str, args: tuple):
     """
     Get tag series.
     """
