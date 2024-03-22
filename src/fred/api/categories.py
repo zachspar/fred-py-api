@@ -11,12 +11,12 @@ class FredAPICategories(FredClient):
     Fred API Categories Namespace.
 
     Endpoints:
-        fred/category - Get a category. https://fred.stlouisfed.org/docs/api/fred/category.html
-        fred/category/children - Get the child categories for a specified parent category. https://fred.stlouisfed.org/docs/api/fred/category_children.html
-        fred/category/related - Get the related categories for a category. https://fred.stlouisfed.org/docs/api/fred/category_related.html
-        fred/category/series - Get the series in a category. https://fred.stlouisfed.org/docs/api/fred/category_series.html
-        fred/category/tags - Get the tags for a category. https://fred.stlouisfed.org/docs/api/fred/category_tags.html
-        fred/category/related_tags - Get the related tags for a category. https://fred.stlouisfed.org/docs/api/fred/category_related_tags.html
+        * fred/category - Get a category. https://fred.stlouisfed.org/docs/api/fred/category.html
+        * fred/category/children - Get the child categories for a specified parent category. https://fred.stlouisfed.org/docs/api/fred/category_children.html
+        * fred/category/related - Get the related categories for a category. https://fred.stlouisfed.org/docs/api/fred/category_related.html
+        * fred/category/series - Get the series in a category. https://fred.stlouisfed.org/docs/api/fred/category_series.html
+        * fred/category/tags - Get the tags for a category. https://fred.stlouisfed.org/docs/api/fred/category_tags.html
+        * fred/category/related_tags - Get the related tags for a category. https://fred.stlouisfed.org/docs/api/fred/category_related_tags.html
     """
 
     @validate_api_args("api_key", "file_type", "category_id")

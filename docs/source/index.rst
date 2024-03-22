@@ -7,7 +7,7 @@ Welcome to fred-py-api's documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    api
