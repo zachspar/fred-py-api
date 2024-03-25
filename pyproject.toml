@@ -34,7 +34,6 @@ dependencies = [
 ci = [
     "black==22.6.0",
     "coverage==6.4.2",
-    "sphinx==7.2.6"
 ]
 dev = [
     "black==22.6.0",
