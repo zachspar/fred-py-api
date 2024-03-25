@@ -16,21 +16,21 @@ class FredAPISeries(FredClient):
     Fred API Series Namespace.
 
     Endpoints:
-        fred/series - Get an economic data series. https://fred.stlouisfed.org/docs/api/fred/series.html
-        fred/series/categories - Get the categories for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_categories.html
-        fred/series/observations - Get the observations or data values for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_observations.html
-        fred/series/release - Get the release for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_release.html
-        fred/series/search - Get economic data series that match keywords. https://fred.stlouisfed.org/docs/api/fred/series_search.html
-        fred/series/search/tags - Get the tags for a series search. https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html
-        fred/series/search/related_tags - Get the related tags for a series search. https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html
-        fred/series/tags - Get the tags for an economic data series. https://fred.stlouisfed.org/docs/api/fred/series_tags.htmlj
-        fred/series/updates - Get economic data series sorted by when observations were updated on the FRED® server. https://fred.stlouisfed.org/docs/api/fred/series_updates.htmlj
-        fred/series/vintagedates - Get the dates in history when a series' data values were revised or new data values were released. https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html
+        * `fred/series - Get an economic data series <https://fred.stlouisfed.org/docs/api/fred/series.html>`_.
+        * `fred/series/categories - Get the categories for an economic data series <https://fred.stlouisfed.org/docs/api/fred/series_categories.html>`_.
+        * `fred/series/observations - Get the observations or data values for an economic data series <https://fred.stlouisfed.org/docs/api/fred/series_observations.html>`_.
+        * `fred/series/release - Get the release for an economic data series <https://fred.stlouisfed.org/docs/api/fred/series_release.html>`_.
+        * `fred/series/search - Get economic data series that match keywords <https://fred.stlouisfed.org/docs/api/fred/series_search.html>`_.
+        * `fred/series/search/tags - Get the tags for a series search <https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html>`_.
+        * `fred/series/search/related_tags - Get the related tags for a series search <https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html>`_.
+        * `fred/series/tags - Get the tags for an economic data series <https://fred.stlouisfed.org/docs/api/fred/series_tags.html>`_.
+        * `fred/series/updates - Get economic data series sorted by when observations were updated on the FRED® server <https://fred.stlouisfed.org/docs/api/fred/series_updates.html>`_.
+        * `fred/series/vintagedates - Get the dates in history when a series' data values were revised or new data values were released <https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html>`_.
     """
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series_categories(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series categories by series ID. https://fred.stlouisfed.org/docs/api/fred/series_categories.html"""
+        """`Get series categories by series ID <https://fred.stlouisfed.org/docs/api/fred/series_categories.html>`_."""
         return self._get(
             f"series/categories",
             {
@@ -41,7 +41,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end", "order_by", "sort_order")
     def get_series_tags(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series tags by series ID. https://fred.stlouisfed.org/docs/api/fred/series_tags.html"""
+        """`Get series tags by series ID <https://fred.stlouisfed.org/docs/api/fred/series_tags.html>`_."""
         return self._get(
             f"series/tags",
             {
@@ -67,7 +67,7 @@ class FredAPISeries(FredClient):
         "exclude_tag_names",
     )
     def get_series_search(self, search_text: str, search_type: str = "full_text", **kwargs) -> JsonOrXml:
-        """Get series search by text. https://fred.stlouisfed.org/docs/api/fred/series_search.html"""
+        """`Get series search by text <https://fred.stlouisfed.org/docs/api/fred/series_search.html>`_."""
         return self._get(
             f"series/search",
             {
@@ -92,7 +92,7 @@ class FredAPISeries(FredClient):
         "sort_order",
     )
     def get_series_search_tags(self, series_search_text: str, **kwargs) -> JsonOrXml:
-        """Get series search tags by text. https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html"""
+        """`Get series search tags by text <https://fred.stlouisfed.org/docs/api/fred/series_search_tags.html>`_."""
         return self._get(
             f"series/search/tags",
             {
@@ -117,7 +117,7 @@ class FredAPISeries(FredClient):
         "sort_order",
     )
     def get_series_search_related_tags(self, series_search_text: str, tag_names: str, **kwargs) -> JsonOrXml:
-        """Get series related tags by text. https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html"""
+        """`Get series related tags by text <https://fred.stlouisfed.org/docs/api/fred/series_search_related_tags.html>`_."""
         return self._get(
             f"series/search/related_tags",
             {
@@ -145,7 +145,7 @@ class FredAPISeries(FredClient):
         "vintage_dates",
     )
     def get_series_observations(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series observations by series ID. https://fred.stlouisfed.org/docs/api/fred/series_observations.html"""
+        """`Get series observations by series ID <https://fred.stlouisfed.org/docs/api/fred/series_observations.html>`_."""
         return self._get(
             f"series/observations",
             {
@@ -166,7 +166,7 @@ class FredAPISeries(FredClient):
         "end_time",
     )
     def get_series_updates(self, **kwargs) -> JsonOrXml:
-        """Get series updates. https://fred.stlouisfed.org/docs/api/fred/series_updates.html"""
+        """`Get series updates <https://fred.stlouisfed.org/docs/api/fred/series_updates.html>`_."""
         # TODO FIXME: Validate start_time and end_time presence if applicable.
         return self._get(
             f"series/updates",
@@ -179,7 +179,7 @@ class FredAPISeries(FredClient):
         "api_key", "file_type", "series_id", "realtime_start", "realtime_end", "limit", "offset", "sort_order"
     )
     def get_series_vintagedates(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series vintagedates by series ID. https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html"""
+        """`Get series vintagedates by series ID <https://fred.stlouisfed.org/docs/api/fred/series_vintage_dates.html>`_."""
         return self._get(
             f"series/vintagedates",
             {
@@ -190,7 +190,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series_release(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series release by series ID. https://fred.stlouisfed.org/docs/api/fred/series_release.html"""
+        """`Get series release by series ID <https://fred.stlouisfed.org/docs/api/fred/series_release.html>`_."""
         return self._get(
             f"series/release",
             {
@@ -201,7 +201,7 @@ class FredAPISeries(FredClient):
 
     @validate_api_args("api_key", "file_type", "series_id", "realtime_start", "realtime_end")
     def get_series(self, series_id: str, **kwargs) -> JsonOrXml:
-        """Get series by ID. https://fred.stlouisfed.org/docs/api/fred/series.html"""
+        """`Get series by ID <https://fred.stlouisfed.org/docs/api/fred/series.html>`_."""
         return self._get(
             f"series",
             {

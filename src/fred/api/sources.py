@@ -16,16 +16,16 @@ class FredAPISources(FredClient):
     Fred API Sources Namespace.
 
     Endpoints:
-        fred/sources - Get all sources of economic data. https://fred.stlouisfed.org/docs/api/fred/sources.html
-        fred/source - Get a source of economic data. https://fred.stlouisfed.org/docs/api/fred/source.html
-        fred/source/releases - Get the releases for a source. https://fred.stlouisfed.org/docs/api/fred/source_releases.html
+        * `fred/sources - Get all sources of economic data <https://fred.stlouisfed.org/docs/api/fred/sources.html>`_.
+        * `fred/source - Get a source of economic data <https://fred.stlouisfed.org/docs/api/fred/source.html>`_.
+        * `fred/source/releases - Get the releases for a source <https://fred.stlouisfed.org/docs/api/fred/source_releases.html>`_.
     """
 
     @validate_api_args(
         "api_key", "file_type", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"
     )
     def get_sources(self, **kwargs) -> JsonOrXml:
-        """Get sources. https://fred.stlouisfed.org/docs/api/fred/sources.html"""
+        """`Get sources <https://fred.stlouisfed.org/docs/api/fred/sources.html>`_."""
         return self._get(
             f"sources",
             {
@@ -35,7 +35,7 @@ class FredAPISources(FredClient):
 
     @validate_api_args("api_key", "file_type", "source_id", "realtime_start", "realtime_end")
     def get_source(self, source_id: int, **kwargs) -> JsonOrXml:
-        """Get source by ID. https://fred.stlouisfed.org/docs/api/fred/source.html"""
+        """`Get source by ID <https://fred.stlouisfed.org/docs/api/fred/source.html>`_."""
         return self._get(
             f"source",
             {
@@ -56,7 +56,7 @@ class FredAPISources(FredClient):
         "sort_order",
     )
     def get_source_releases(self, source_id: int, **kwargs) -> JsonOrXml:
-        """Get source releases by source ID. https://fred.stlouisfed.org/docs/api/fred/source_releases.html"""
+        """`Get source releases by source ID <https://fred.stlouisfed.org/docs/api/fred/source_releases.html>`_."""
         return self._get(
             f"source/releases",
             {
