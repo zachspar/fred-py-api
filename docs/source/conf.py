@@ -8,7 +8,7 @@
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__name__), ".."))
+sys.path.insert(0, os.path.abspath("../.."))
 
 project = "fred-py-api"
 copyright = "2024, Zachary Spar"
