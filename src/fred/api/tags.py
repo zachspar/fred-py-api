@@ -16,9 +16,9 @@ class FredAPITags(FredClient):
     Fred API Tags Namespace.
 
     Endpoints:
-        fred/tags - Get all tags, search for tags, or get tags by name. https://fred.stlouisfed.org/docs/api/fred/tags.html
-        fred/related_tags - Get the related tags for one or more tags. https://fred.stlouisfed.org/docs/api/fred/related_tags.html
-        fred/tags/series - Get the series matching tags. https://fred.stlouisfed.org/docs/api/fred/tags_series.html
+        * `fred/tags - Get all tags, search for tags, or get tags by name <https://fred.stlouisfed.org/docs/api/fred/tags.html>`_.
+        * `fred/related_tags - Get the related tags for one or more tags <https://fred.stlouisfed.org/docs/api/fred/related_tags.html>`_.
+        * `fred/tags/series - Get the series matching tags <https://fred.stlouisfed.org/docs/api/fred/tags_series.html>`_.
     """
 
     @validate_api_args(
@@ -35,7 +35,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_tags(self, **kwargs) -> JsonOrXml:
-        """Get tags. https://fred.stlouisfed.org/docs/api/fred/tags.html"""
+        """`Get tags <https://fred.stlouisfed.org/docs/api/fred/tags.html>`_."""
         return self._get(
             f"tags",
             {
@@ -58,7 +58,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_related_tags(self, tag_names: str, **kwargs) -> JsonOrXml:
-        """Get related tags by tag names. https://fred.stlouisfed.org/docs/api/fred/related_tags.html"""
+        """`Get related tags by tag names <https://fred.stlouisfed.org/docs/api/fred/related_tags.html>`_."""
         return self._get(
             f"related_tags",
             {
@@ -80,7 +80,7 @@ class FredAPITags(FredClient):
         "sort_order",
     )
     def get_tags_series(self, tag_names: str, **kwargs) -> JsonOrXml:
-        """Get tags series by tag names. https://fred.stlouisfed.org/docs/api/fred/tags_series.html"""
+        """`Get tags series by tag names <https://fred.stlouisfed.org/docs/api/fred/tags_series.html>`_."""
         return self._get(
             f"tags/series",
             {

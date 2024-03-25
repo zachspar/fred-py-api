@@ -16,22 +16,22 @@ class FredAPIReleases(FredClient):
     Fred API Releases Namespace.
 
     Endpoints:
-        fred/releases - Get all releases of economic data. https://fred.stlouisfed.org/docs/api/fred/releases.html
-        fred/releases/dates - Get release dates for all releases of economic data. https://fred.stlouisfed.org/docs/api/fred/releases_dates.html
-        fred/release - Get a release of economic data. https://fred.stlouisfed.org/docs/api/fred/release.html
-        fred/release/dates - Get release dates for a release of economic data. https://fred.stlouisfed.org/docs/api/fred/release_dates.html
-        fred/release/series - Get the series on a release of economic data. https://fred.stlouisfed.org/docs/api/fred/release_series.html
-        fred/release/sources - Get the sources for a release of economic data. https://fred.stlouisfed.org/docs/api/fred/release_sources.html
-        fred/release/tags - Get the tags for a release. https://fred.stlouisfed.org/docs/api/fred/release_tags.html
-        fred/release/related_tags - Get the related tags for a release. https://fred.stlouisfed.org/docs/api/fred/release_related_tags.html
-        fred/release/tables - Get the release tables for a given release. https://fred.stlouisfed.org/docs/api/fred/release_tables.html
+        * `fred/releases - Get all releases of economic data <https://fred.stlouisfed.org/docs/api/fred/releases.html>`_.
+        * `fred/releases/dates - Get release dates for all releases of economic data <https://fred.stlouisfed.org/docs/api/fred/releases_dates.html>`_.
+        * `fred/release - Get a release of economic data <https://fred.stlouisfed.org/docs/api/fred/release.html>`_.
+        * `fred/release/dates - Get release dates for a release of economic data <https://fred.stlouisfed.org/docs/api/fred/release_dates.html>`_.
+        * `fred/release/series - Get the series on a release of economic data <https://fred.stlouisfed.org/docs/api/fred/release_series.html>`_.
+        * `fred/release/sources - Get the sources for a release of economic data <https://fred.stlouisfed.org/docs/api/fred/release_sources.html>`_.
+        * `fred/release/tags - Get the tags for a release <https://fred.stlouisfed.org/docs/api/fred/release_tags.html>`_.
+        * `fred/release/related_tags - Get the related tags for a release <https://fred.stlouisfed.org/docs/api/fred/release_related_tags.html>`_.
+        * `fred/release/tables - Get the release tables for a given release <https://fred.stlouisfed.org/docs/api/fred/release_tables.html>`_.
     """
 
     @validate_api_args(
         "api_key", "file_type", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"
     )
     def get_releases(self, **kwargs) -> JsonOrXml:
-        """Get releases. https://fred.stlouisfed.org/docs/api/fred/releases.html"""
+        """`Get releases <https://fred.stlouisfed.org/docs/api/fred/releases.html>`_."""
         return self._get(
             f"releases",
             {
@@ -51,7 +51,7 @@ class FredAPIReleases(FredClient):
         "include_release_dates_with_no_data",
     )
     def get_releases_dates(self, **kwargs) -> JsonOrXml:
-        """Get releases dates. https://fred.stlouisfed.org/docs/api/fred/releases_dates.html"""
+        """`Get releases dates <https://fred.stlouisfed.org/docs/api/fred/releases_dates.html>`_."""
         return self._get(
             f"releases/dates",
             {
@@ -61,7 +61,7 @@ class FredAPIReleases(FredClient):
 
     @validate_api_args("api_key", "release_id", "file_type", "realtime_start", "realtime_end")
     def get_release(self, release_id: int, **kwargs) -> JsonOrXml:
-        """Get release by ID. https://fred.stlouisfed.org/docs/api/fred/release.html"""
+        """`Get release by ID <https://fred.stlouisfed.org/docs/api/fred/release.html>`_."""
         return self._get(
             f"release",
             {
@@ -82,7 +82,7 @@ class FredAPIReleases(FredClient):
         "include_release_dates_with_no_data",
     )
     def get_release_dates(self, release_id: int, **kwargs) -> JsonOrXml:
-        """Get release dates by release ID. https://fred.stlouisfed.org/docs/api/fred/release_dates.html"""
+        """`Get release dates by release ID <https://fred.stlouisfed.org/docs/api/fred/release_dates.html>`_."""
         return self._get(
             f"release/dates",
             {
@@ -107,7 +107,7 @@ class FredAPIReleases(FredClient):
         "exclude_tag_names",
     )
     def get_release_series(self, release_id: int, **kwargs) -> JsonOrXml:
-        """Get release series by release ID. https://fred.stlouisfed.org/docs/api/fred/release_series.html"""
+        """`Get release series by release ID <https://fred.stlouisfed.org/docs/api/fred/release_series.html>`_."""
         return self._get(
             f"release/series",
             {
@@ -118,7 +118,7 @@ class FredAPIReleases(FredClient):
 
     @validate_api_args("api_key", "file_type", "release_id", "realtime_start", "realtime_end")
     def get_release_sources(self, release_id: int, **kwargs) -> JsonOrXml:
-        """Get release sources by release ID. https://fred.stlouisfed.org/docs/api/fred/release_sources.html"""
+        """`Get release sources by release ID <https://fred.stlouisfed.org/docs/api/fred/release_sources.html>`_."""
         return self._get(
             f"release/sources",
             {
@@ -142,7 +142,7 @@ class FredAPIReleases(FredClient):
         "sort_order",
     )
     def get_release_tags(self, release_id: int, **kwargs) -> JsonOrXml:
-        """Get release tags by release ID. https://fred.stlouisfed.org/docs/api/fred/release_tags.html"""
+        """`Get release tags by release ID <https://fred.stlouisfed.org/docs/api/fred/release_tags.html>`_."""
         return self._get(
             f"release/tags",
             {
@@ -167,8 +167,7 @@ class FredAPIReleases(FredClient):
         "sort_order",
     )
     def get_release_related_tags(self, release_id: int, tag_names: str, **kwargs) -> JsonOrXml:
-        """Get release related tags by release ID and tag names.
-        https://fred.stlouisfed.org/docs/api/fred/release_related_tags.html"""
+        """`Get release related tags by release ID and tag names <https://fred.stlouisfed.org/docs/api/fred/release_related_tags.html>`_."""
         return self._get(
             f"release/related_tags",
             {
@@ -182,8 +181,7 @@ class FredAPIReleases(FredClient):
         "api_key", "file_type", "release_id", "element_id", "include_observation_values", "observation_date"
     )
     def get_release_tables(self, release_id: int, element_id: int = None, **kwargs) -> JsonOrXml:
-        """Get release tables by release ID and element ID.
-        https://fred.stlouisfed.org/docs/api/fred/release_tables.html"""
+        """`Get release tables by release ID and element ID <https://fred.stlouisfed.org/docs/api/fred/release_tables.html>`_."""
         return self._get(
             f"release/tables",
             {

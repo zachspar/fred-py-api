@@ -10,8 +10,11 @@ Welcome to fred-py-api's documentation!
    :maxdepth: 3
    :caption: Contents:
 
-   api
-
+   categories
+   releases
+   series
+   sources
+   tags
 
 
 Indices and tables

@@ -1,9 +1,8 @@
-Python API
+Categories
 ==========
 
 .. autosummary::
    :toctree: generated
 
-.. automodule:: fred.api
+.. automodule:: fred.api.categories
    :members:
-
