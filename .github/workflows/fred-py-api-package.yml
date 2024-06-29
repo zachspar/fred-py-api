@@ -1,6 +1,6 @@
+---
 # This workflow will install Python dependencies, run tests and lint
 # On publish event, it will build and publish a package to PyPI
-
 name: Lint, Test & Upload fred-py-api
 
 on:
@@ -13,7 +13,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
@@ -23,7 +22,6 @@ jobs:
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       TEST_FRED_API_KEY__API: ${{ secrets.TEST_FRED_API_KEY__API }}
       TEST_FRED_API_KEY__CLI: ${{ secrets.TEST_FRED_API_KEY__CLI }}
-
     steps:
     - uses: actions/checkout@v4
 

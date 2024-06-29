@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath(os.path.join("..", "..", "src")))
 project = "fred-py-api"
 copyright = "2024, Zachary Spar"
 author = "Zachary Spar"
-release = "1.1.3"
+release = "1.2.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
