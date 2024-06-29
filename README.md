@@ -6,6 +6,27 @@
 # Fred CLI & Python API
 A fully-featured FRED Command-Line Interface & Python API Wrapper.
 
+## Table of Contents
+- [Installation](#installation)
+  - [Homebrew](#homebrew)
+  - [PyPI](#pypi)
+- [Python API Documentation](#python-api-documentation)
+- [Wiki](#wiki)
+- [FRED References](#fred-references)
+- [Shell Auto-Completion](#shell-auto-completion)
+  - [`zsh` Completions](#zsh-completions)
+  - [`bash` Completions](#bash-completions)
+  - [`fish` Completions](#fish-completions)
+
+## Installation:
+Install `fred` in a couple of ways.
+
+### Homebrew
+`brew install fred`
+
+### PyPI
+`pip install fred-py-api`
+
 ## Python API Documentation:
 - [fred-py-api Docs](https://fred-py-api.readthedocs.io/en/latest/)
 
