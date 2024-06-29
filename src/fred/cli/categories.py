@@ -15,6 +15,7 @@ __all__ = [
 
 @click.group()
 @click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
+@click.version_option(version="1.2.0")
 @click.pass_context
 def categories(ctx: click.Context, api_key: str):
     """

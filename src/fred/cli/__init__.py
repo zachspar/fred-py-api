@@ -18,6 +18,7 @@ __all__ = [
 
 @group()
 @click.option("--api-key", type=click.STRING, required=False, help="FRED API key.")
+@click.version_option(version="1.2.0")
 @click.pass_context
 def fred_cli(ctx: click.Context, api_key: str):
     """CLI for the Federal Reserve Economic Data (FRED)."""
