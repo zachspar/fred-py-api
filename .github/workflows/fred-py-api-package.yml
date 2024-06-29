@@ -9,7 +9,7 @@ on:
   push:
     branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -25,44 +25,52 @@ jobs:
       TEST_FRED_API_KEY__CLI: ${{ secrets.TEST_FRED_API_KEY__CLI }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install -e .[ci]
+        python3 -m pip install --upgrade pip
+        python3 -m pip install -e .[ci]
+
     - name: Lint with black
       run: |
         # Run black on all Python files
         black --check ./
+
     - name: Test with coverage
       run: |
         coverage run -m unittest
         coverage report -m
+
     - name: Upload coverage report
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v4
 
   pypi:
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x'
+        python-version: '3.12'
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install build
+        python3 -m pip install --upgrade pip build
+
     - name: Build package
-      run: python -m build
+      run: python3 -m build
+
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+      uses: pypa/gh-action-pypi-publish@v1
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
