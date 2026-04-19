@@ -1,0 +1,50 @@
+{
+  description = "A fully-featured FRED Command Line Interface & Python API wrapper";
+
+  inputs = {
+    # Latest stable Nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+  };
+
+  outputs =
+    { self, nixpkgs }:
+    let
+      # Systems supported
+      allSystems = [
+        "x86_64-linux" # 64-bit Intel/AMD Linux
+        "aarch64-linux" # 64-bit ARM Linux
+        "x86_64-darwin" # 64-bit Intel macOS
+        "aarch64-darwin" # 64-bit ARM macOS
+      ];
+
+      # Helper to provide system-specific attributes
+      forAllSystems =
+        f:
+        nixpkgs.lib.genAttrs allSystems (
+          system:
+          f {
+            pkgs = import nixpkgs { inherit system; };
+          }
+        );
+    in
+    {
+      packages = forAllSystems (
+        { pkgs }:
+        {
+          default =
+            let
+              python = pkgs.python3;
+            in
+            python.pkgs.buildPythonApplication {
+              name = "fred-py-api";
+              version = "1.2.1";
+              buildInputs = with python.pkgs; [ pip setuptools wheel ];
+              propagatedBuildInputs = with python.pkgs; [ click requests ];
+              doCheck = false;
+              pyproject = true;
+              src = ./.;
+            };
+        }
+      );
+    };
+}
