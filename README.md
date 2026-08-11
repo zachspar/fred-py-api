@@ -1,3 +1,5 @@
+
+
 [![PyPI version](https://badge.fury.io/py/fred-py-api.svg)](https://badge.fury.io/py/fred-py-api)
 [![Documentation Status](https://readthedocs.org/projects/fred-py-api/badge/?version=latest)](https://fred-py-api.readthedocs.io/en/latest/?badge=latest)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/fred-py-api?style=flat)](https://pypi.org/project/fred-py-api/)
@@ -66,10 +68,10 @@ eval "$(_TAGS_COMPLETE=bash_source tags)"
 ### `fish` Completions
 Add this to `~/.config/fish/completions/fred.fish`
 ```fish
-_FRED_COMPLETE=fish_source fred | source
-_CATEGORIES_COMPLETE=fish_source categories | source
-_RELEASES_COMPLETE=fish_source releases | source
-_SERIES_COMPLETE=fish_source series | source
-_SOURCES_COMPLETE=fish_source sources | source
-_TAGS_COMPLETE=fish_source tags | source
+_FRED_COMPLETE=fish-source fred | source
+_CATEGORIES_COMPLETE=fish-source categories | source
+_RELEASES_COMPLETE=fish-source releases | source
+_SERIES_COMPLETE=fish-source series | source
+_SOURCES_COMPLETE=fish-source sources | source
+_TAGS_COMPLETE=fish-source tags | source
 ```
